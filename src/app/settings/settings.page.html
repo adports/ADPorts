@@ -1,0 +1,87 @@
+<ion-app>
+  <!-- Back button with a default href -->
+  <ion-header>
+    <ion-toolbar class="header">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Settings</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content >
+    <!--PASS HISTORY-->
+    <div class="marginTop">
+      <ion-list >
+        <ion-item>
+          <ion-list-header>
+            <ion-label>PASS HISTORY</ion-label>
+          </ion-list-header>
+        </ion-item>
+        <ion-item>
+          <ion-label>-Select-</ion-label>
+          <ion-select value="brown" okText="Okay" cancelText="Dismiss">
+            <ion-select-option value="brown">1 YEAR</ion-select-option>
+            <ion-select-option value="blonde">8 MONTHS</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </div>
+    <!--NOTIFICATION ALERTS-->
+    <div class="marginTop">
+      <ion-list >
+        <ion-item>
+          <ion-list-header>
+            <ion-label>NOTIFICATION ALERTS</ion-label>
+          </ion-list-header>
+        </ion-item>
+        <ion-radio-group>
+          <ion-item>
+            <ion-label>Daily Pass Online</ion-label>
+            <ion-radio value="cord"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Visitor Pass Online</ion-label>
+            <ion-radio value="duesenberg"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </div>
+    <!--PERSONAL SETTINGS-->
+    <div class="marginTop">
+      <ion-list >
+        <ion-item>
+          <ion-list-header>
+            <ion-label>PERSONAL SETTINGS</ion-label>
+          </ion-list-header>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Name<span class="dot">*</span></ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Date Of Birth</ion-label>
+          <ion-datetime  display-format="MMM DD, YYYY"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Mobile Number<span class="dot">*</span></ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Company Email<span class="dot">*</span></ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Company Telephone<span class="dot">*</span></ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-button margin-top expand="block" class="header" >Reset All</ion-button>
+        <ion-button margin-top expand="block" class="header" > Save</ion-button>
+      </ion-list>
+    </div>
+
+
+
+
+
+  </ion-content>
+</ion-app>

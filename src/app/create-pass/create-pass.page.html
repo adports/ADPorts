@@ -1,0 +1,241 @@
+<ion-app>
+  <!-- Back button with a default href -->
+  <ion-header>
+    <ion-toolbar class="header">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Create Ports Pass</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content >
+    <!-- List of Input Items -->
+    <div class="marginTop">
+      <ion-list >
+        <ion-item>
+          <ion-list-header>
+            <ion-label>PASS TYPE</ion-label>
+          </ion-list-header>
+        </ion-item>
+        <ion-radio-group>
+          <ion-item>
+            <ion-label>Daily Pass Online</ion-label>
+            <ion-radio value="cord"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Visitor Pass Online</ion-label>
+            <ion-radio value="duesenberg"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </div>
+    <div class="marginTop">
+      <ion-list >
+        <ion-item>
+          <ion-list-header>
+            <ion-label>Visit Dates </ion-label>
+          </ion-list-header>
+        </ion-item>
+        <ion-item>
+          <ion-label>Entry Date & Time</ion-label>
+          <ion-datetime  display-format="MMM DD, YYYY HH:mm"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>Exit Date Date & Time</ion-label>
+          <ion-datetime display-format="MMM DD, YYYY HH:mm"></ion-datetime>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="marginTop">
+      <ion-list >
+        <ion-item>
+          <ion-list-header>
+            <ion-label>REASON TO VISIT</ion-label>
+          </ion-list-header>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Reason<span class="dot">*</span></ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="marginTop">
+      <ion-list >
+        <ion-item>
+          <ion-list-header>
+            <ion-label>PORT TO VISIT</ion-label>
+          </ion-list-header>
+        </ion-item>
+        <ion-radio-group>
+          <ion-item>
+            <ion-label>Musaffah Port</ion-label>
+            <ion-radio value="Musaffah"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Free  Port and  New Port</ion-label>
+            <ion-radio value="Freeport"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Kalifa Port</ion-label>
+            <ion-radio value="Kalifa"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Mina Zayead Port</ion-label>
+            <ion-radio value="Mina"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </div>
+    <div class="marginTop">
+      <ion-list >
+        <ion-item>
+          <ion-list-header>
+            <ion-label>TITLE</ion-label>
+          </ion-list-header>
+        </ion-item>
+        <ion-radio-group>
+          <ion-item>
+            <ion-label>Mr</ion-label>
+            <ion-radio value="Mr"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Miss</ion-label>
+            <ion-radio value="Miss"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Mrs</ion-label>
+            <ion-radio value="Mrs"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </div>
+    <div class="marginTop">
+      <ion-list>
+        <ion-item>
+          <ion-list-header>
+            <ion-label>PERSONAL IMFORMATION</ion-label>
+          </ion-list-header>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Reason<span class="dot">*</span></ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Date Of Birth</ion-label>
+          <ion-datetime  display-format="MMM DD, YYYY"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Mobile<span class="dot">*</span></ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="marginTop">
+      <ion-list >
+        <ion-item>
+          <ion-list-header>
+            <ion-label>GENDER</ion-label>
+          </ion-list-header>
+        </ion-item>
+        <ion-radio-group>
+          <ion-item>
+            <ion-label>Male</ion-label>
+            <ion-radio value="Male"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Female</ion-label>
+            <ion-radio value="Mrs"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </div>
+    <div class="marginTop">
+      <ion-list >
+        <ion-item>
+          <ion-list-header>
+            <ion-label>NATIONALITY</ion-label>
+          </ion-list-header>
+        </ion-item>
+        <ion-item>
+          <ion-label>-Select-</ion-label>
+          <ion-select value="brown" okText="Okay" cancelText="Dismiss">
+            <ion-select-option value="brown">IDIAN</ion-select-option>
+            <ion-select-option value="blonde">UAE</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="marginTop">
+      <ion-list >
+        <ion-item>
+          <ion-list-header>
+            <ion-label>ID TYPE</ion-label>
+          </ion-list-header>
+        </ion-item>
+        <ion-radio-group>
+          <ion-item>
+            <ion-label>UID NUMBER</ion-label>
+            <ion-radio value="UID"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Passport</ion-label>
+            <ion-radio value="Passport"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Emirates ID</ion-label>
+            <ion-radio value="Emirates"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Others</ion-label>
+            <ion-radio value="Others"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </div>
+    <div class="marginTop">
+      <ion-list >
+        <ion-item>
+          <ion-list-header>
+            <ion-label>ID INFORMATION</ion-label>
+          </ion-list-header>
+        </ion-item>
+        <div class="profile">
+          <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+        </div>
+        <ion-button margin-top expand="block" class="header" >Add Photo</ion-button>
+      </ion-list>
+    </div>
+    <div class="marginTop">
+      <ion-list >
+        <ion-item>
+          <ion-list-header>
+            <ion-label>ATTACHMENT</ion-label>
+          </ion-list-header>
+        </ion-item>
+        <div class="attachment">
+          <ion-grid>
+            <ion-row >
+              <ion-col size-xs="6" size-sm="6" size-lg="3" size-xl="6" >
+                <!-- Advanced: explicity set the icon for each platform -->
+                <ion-icon ios="ios-link" md="md-link"></ion-icon>
+              </ion-col>
+              <ion-col size-xs="6" size-sm="6" size-lg="6" size-xl="6" >
+                <ion-icon ios="ios-link" md="md-link"></ion-icon>
+              </ion-col>
+            </ion-row>
+            <ion-row >
+              <ion-col size-xs="6" size-sm="6" size-lg="6" size-xl="6" >
+                <ion-icon ios="ios-link" md="md-link"></ion-icon>
+              </ion-col>
+              <ion-col size-xs="6" size-sm="6" size-lg="6" size-xl="6" >
+                <ion-icon ios="ios-link" md="md-link"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <ion-button margin-top expand="block" class="header" >Add Attachment</ion-button>
+        <ion-button margin-top expand="block" class="header" > Submit</ion-button>
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-app>

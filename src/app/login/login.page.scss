@@ -1,0 +1,61 @@
+
+$primaary:#012a3a;
+$secondary:#3e8ede;
+$tertiary:#003849;
+
+.welcome{
+
+text-align: center;
+h4{color: #142336}
+small{color: #000000;    font-size: 85%;}
+}
+
+.dot{
+color: red;
+}
+.forget_password{
+    a{float: right;
+        line-height: 21px;
+        text-decoration: none;
+        margin: 0 10px 17px 0;
+        color:#3e8ede;
+    }
+}
+
+.login-btn{
+    margin: 100px 0px 4px 0px;
+    ion-button{    margin-bottom: 25px; 
+        &.login{--background:#3e8ede;}
+        &.back{--background: #003849;}
+     } 
+}
+
+
+.tell_Friend {
+    text-align: center;
+    ion-icon {
+        font-size: 45px;
+        color: #012a3a;
+         
+    }
+
+    a{    line-height: 23px;margin: 0px;    font-size: 13px;
+        color: #4c8dff;    display: block; text-decoration: none}
+}
+
+.aboutus{
+    text-align: center;
+
+ion-icon {
+    font-size: 45px;
+    color: #012a3a;
+    margin: 0px;
+     
+}
+
+a{       font-size: 13px; line-height: 23px; margin: 0px;    display: block;text-decoration: none;
+    color: #4c8dff;}
+}
+
+
+.no-scroll .scroll-content {overflow: hidden;}

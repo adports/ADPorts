@@ -1,0 +1,48 @@
+// http://ionicframework.com/docs/theming/
+@import "~@ionic/angular/css/core.css";
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.header{--background: #012a3a; color:#fff;}
+
+ion-header{
+    --background: #012a3a;
+    text-align: center;
+    ion-toolbar {
+        color: #142336;
+    }
+
+}
+
+.dot{
+    color: red;
+    }
+
+    ion-list{padding: 0px 15px 0px 15px;
+   
+    }
+
+
+    ion-item.item-input {
+        --padding-start: 0px;
+    }
+
+    .ion-select{ --padding-start: 0px;}
+    ion-item.item-has-value {
+        --padding-start: 0px;
+    }
+
+    .list-ios {
+        margin: 0px 0px 8px 0px;
+    }
+
+
+
+

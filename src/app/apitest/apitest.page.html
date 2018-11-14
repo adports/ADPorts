@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>apitest</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ul>
+    <li *ngFor="let lst of data">
+      {{ lst.LOOKUP_CODE }}
+        {{lst.DESCRIPTION
+      }}
+    </li>
+  </ul>
+ <!-- <b>{{data.LOOKUP_CODE}}</b> -->
+</ion-content>
