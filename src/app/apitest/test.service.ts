@@ -9,14 +9,13 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class ServicesProvider {
-  posts: any;
+
   constructor(public http: HttpClient) {
-    this.posts = [];
- 
-    
   }
 
   testServiceOne() {
-   return this.http.get('https://epass.adports.ae/WsePass/Wsepass.asmx/GetPorts')
+   return this.http.get('http://172.21.111.48:92/WSTestPass/Wsepass.asmx/GetPorts');
   }
 }
+
+
