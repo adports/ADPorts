@@ -7,13 +7,11 @@ import {Router} from '@angular/router';
     styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-    username = 'abc';
-    password = 'hhgg';
+    username = '' ;
+    password = '';
     login;
 constructor(public http: HttpClient, private router: Router) {
-        this.username = '';
-        this.password = '';
-    }
+}
 ngOnInit() {
     this.validateUsers();
     }
