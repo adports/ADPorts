@@ -25,3 +25,4 @@ export class RegistrationPage implements OnInit {
 }
 
 
+

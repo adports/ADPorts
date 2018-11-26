@@ -34,8 +34,7 @@ validateUsers() {
                     } else {
                         alert('false');
                     }
-
-                },
+                    },
                 err => {
                     console.log('ERROR!: ', err);
                 }
