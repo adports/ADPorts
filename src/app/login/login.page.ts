@@ -16,10 +16,10 @@ ngOnInit() {
     this.validateUsers();
     }
 validateUsers() {
-        const hello = 'username=' + this.username + '&password=' + this.password ;
+        const users = 'username=' + this.username + '&password=' + this.password ;
         let headers: HttpHeaders = new HttpHeaders();
         headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        this.http.post('http://172.21.111.47:92/WSTestPass/WSePass.asmx/ValidateUser', hello , {headers})
+        this.http.post('http://172.21.111.47:92/WSTestPass/WSePass.asmx/ValidateUser', users , {headers})
             .subscribe(
                 data => {
                     console.log(data);

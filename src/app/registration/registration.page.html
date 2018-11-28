@@ -10,43 +10,43 @@
         <ion-list>
             <ion-item>
                 <ion-label position="floating" >Name <span class="dot">*</span></ion-label>
-                <ion-input  [(ngModel)]="name" ></ion-input>
+                <ion-input  [(ngModel)]="OrgName" ></ion-input>
             </ion-item>
         </ion-list>
         <ion-list>
             <ion-item>
                 <ion-label position="floating">Email <span class="dot">*</span></ion-label>
-                <ion-input  [(ngModel)]="email"></ion-input>
+                <ion-input  [(ngModel)]="OrgEmail"></ion-input>
             </ion-item>
         </ion-list>
         <ion-list>
             <ion-item>
                 <ion-label position="floating">POBox <span class="dot">*</span></ion-label>
-                <ion-input  [(ngModel)]="pobox"></ion-input>
+                <ion-input  [(ngModel)]="OrgPOBox"></ion-input>
             </ion-item>
         </ion-list>
         <ion-list>
             <ion-item>
                 <ion-label position="floating">City <span class="dot">*</span></ion-label>
-                <ion-input></ion-input>
+                <ion-input [(ngModel)]="OrgCity"></ion-input>
             </ion-item>
         </ion-list>
         <ion-list>
             <ion-item>
                 <ion-label position="floating">Telephone <span class="dot">*</span></ion-label>
-                <ion-input></ion-input>
+                <ion-input [(ngModel)]="OrgTel"></ion-input>
             </ion-item>
         </ion-list>
         <br>
         <ion-list>
             <ion-item>
                 <ion-label class="type_label">Type <span class="dot">*</span> </ion-label>
-                <ion-select value="brown" okText="Okay" cancelText="Dismiss">
+                <ion-select [(ngModel)]="OrgType" value="brown" okText="Okay" cancelText="Dismiss">
                     <ion-select-option value="brown">Customer</ion-select-option>
-                    <ion-select-option value="blonde">Supplier</ion-select-option>
-                    <ion-select-option value="black">Trucking</ion-select-option>
-                    <ion-select-option value="red">Cleaning & Forwording</ion-select-option>
-                    <ion-select-option value="red">Others</ion-select-option>
+                    <ion-select-option  value="blonde">Supplier</ion-select-option>
+                    <ion-select-option  value="black">Trucking</ion-select-option>
+                    <ion-select-option  value="red">Cleaning & Forwording</ion-select-option>
+                    <ion-select-option  value="red">Others</ion-select-option>
                 </ion-select>
             </ion-item>
          </ion-list>
@@ -60,49 +60,50 @@
             <ion-list>
                 <ion-item>
                     <ion-label position="floating">First Name <span class="dot">*</span></ion-label>
-                    <ion-input></ion-input>
+                    <ion-input [(ngModel)]="FirstName"></ion-input>
                 </ion-item>
             </ion-list>
             <ion-list>
                 <ion-item>
                     <ion-label position="floating">Last Name <span class="dot">*</span></ion-label>
-                    <ion-input></ion-input>
+                    <ion-input [(ngModel)]="LastName" ></ion-input>
                 </ion-item>
             </ion-list>
             <ion-list>
                 <ion-item>
                     <ion-label position="floating">Designation <span class="dot">*</span></ion-label>
-                    <ion-input></ion-input>
+                    <ion-input [(ngModel)]="Designation" ></ion-input>
                 </ion-item>
             </ion-list>
             <ion-list>
                 <ion-item>
                     <ion-label position="floating">Department <span class="dot">*</span></ion-label>
-                    <ion-input></ion-input>
+                    <ion-input [(ngModel)]="Department"></ion-input>
                 </ion-item>
             </ion-list>
             <ion-list>
                 <ion-item>
                     <ion-label position="floating">Mobile <span class="dot">*</span></ion-label>
-                    <ion-input></ion-input>
+                    <ion-input [(ngModel)]="Mobile"></ion-input>
                 </ion-item>
             </ion-list>
             <ion-list>
                 <ion-item>
                     <ion-label position="floating">User ID <span class="dot">*</span></ion-label>
-                    <ion-input></ion-input>
+                    <ion-input [(ngModel)]="UserId"></ion-input>
                 </ion-item>
+
             </ion-list>
             <ion-list>
                 <ion-item>
                     <ion-label position="floating">Email <span class="dot">*</span></ion-label>
-                    <ion-input></ion-input>
+                    <ion-input [(ngModel)]="Email" ></ion-input>
                 </ion-item>
             </ion-list>
   </ion-item-group>
 
         <div class="login-btn" padding>
-            <ion-button  expand="block" class="login">Submit</ion-button>
+            <ion-button  expand="block" (click)="callNewRegistraion();" class="login">Submit</ion-button>
         </div>
 
     </div>
