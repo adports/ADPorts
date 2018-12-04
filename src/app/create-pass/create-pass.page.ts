@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {visit} from '@angular/compiler-cli/src/ngtsc/util/src/visitor';
 
 @Component({
   selector: 'app-create-pass',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-pass.page.scss'],
 })
 export class CreatePassPage implements OnInit {
-
-  constructor() { }
+    orderBy;
+    daily = 'daily';
+  constructor() {}
 
   ngOnInit() {
+    this.selected(this.daily);
   }
 
+    selected(value: string) {
+    alert(value);
+    // console.log(this.orderBy);
+        this.orderBy = value;
+    }
 }
