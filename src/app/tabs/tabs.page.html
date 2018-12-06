@@ -1,0 +1,38 @@
+<ion-tabs>
+  <ion-tab tab="createpass">
+    <ion-router-outlet name="createpass"></ion-router-outlet>
+  </ion-tab>
+  <ion-tab tab="history">
+    <ion-router-outlet name="history"></ion-router-outlet>
+  </ion-tab>
+  <ion-tab tab="settings">
+    <ion-router-outlet name="settings"></ion-router-outlet>
+  </ion-tab>
+  <ion-tab tab="more">
+    <ion-router-outlet name="more"></ion-router-outlet>
+  </ion-tab>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="createpass" href="/tabs/(createpass:createpass)">
+      <ion-icon name="add"></ion-icon>
+      <ion-label>Create Pass</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="history" href="/tabs/(history:history)">
+      <ion-icon name="timer"></ion-icon>
+      <ion-label>History</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="settings" href="/tabs/(settings:settings)">
+      <ion-icon name="Settings"></ion-icon>
+      <ion-label>Settings</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="more" href="/tabs/(more:more)">
+      <ion-icon name="more"></ion-icon>
+      <ion-label>More</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
+</ion-tabs>
