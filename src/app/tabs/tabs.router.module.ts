@@ -2,9 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { TabsPage } from './tabs.page';
-import { HomePage } from '../home/home.page';
-import { AboutPage } from '../about/about.page';
-import {CreatePage} from '../create/create.page';
 import {CreatePassPage} from '../create-pass/create-pass.page';
 import {HistoryPage} from '../history/history.page';
 import {SettingsPage} from '../settings/settings.page';
