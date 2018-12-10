@@ -1,4 +1,4 @@
-<ion-app>
+
   <!-- Back button with a default href -->
   <ion-header>
     <ion-toolbar class="header">
@@ -6,19 +6,17 @@
     </ion-toolbar>
   </ion-header>
   <ion-content >
-    <!-- List of Input Items -->
-
+    <!-- List of PassType -->
     <div class="marginTop">
-      <ion-list  >
-        <ion-item>
+      <ion-list>
+        <ion-item-divider>
           <ion-list-header>
             <ion-label>PASS TYPE</ion-label>
           </ion-list-header>
-        </ion-item>
+        </ion-item-divider>
         <ion-radio-group>
           <ion-item>
             <ion-label>Daily Pass Online</ion-label>
-
             <ion-radio value="daily" (click)="selected('daily')" [checked]="daily"></ion-radio>
           </ion-item>
           <ion-item>
@@ -27,15 +25,15 @@
           </ion-item>
         </ion-radio-group>
       </ion-list>
-
     </div>
+    <!-- Visit Dates -->
     <div class="marginTop">
-      <ion-list >
-        <ion-item>
+      <ion-list>
+        <ion-item-divider>
           <ion-list-header>
             <ion-label>Visit Dates </ion-label>
           </ion-list-header>
-        </ion-item>
+        </ion-item-divider>
         <ion-item>
           <ion-label>Entry Date & Time</ion-label>
           <ion-datetime  display-format="MMM DD, YYYY HH:mm"></ion-datetime>
@@ -46,19 +44,21 @@
         </ion-item>
       </ion-list>
     </div>
+    <!-- Reason To Visit -->
     <div class="marginTop">
       <ion-list >
-        <ion-item>
+        <ion-item-divider>
           <ion-list-header>
             <ion-label>REASON TO VISIT</ion-label>
           </ion-list-header>
-        </ion-item>
+        </ion-item-divider>
         <ion-item>
           <ion-label position="floating">Reason<span class="dot">*</span></ion-label>
           <ion-input></ion-input>
         </ion-item>
       </ion-list>
     </div>
+    <!-- Ports To Visit  -->
     <div class="marginTop">
       <ion-list >
         <ion-item>
@@ -86,8 +86,14 @@
         </ion-radio-group>
       </ion-list>
     </div>
+    <!-- Personal Information -->
     <div class="marginTop">
-      <ion-list >
+      <ion-list>
+        <ion-item>
+          <ion-list-header>
+            <ion-label>PERSONAL IMFORMATION</ion-label>
+          </ion-list-header>
+        </ion-item>
         <ion-item>
           <ion-list-header>
             <ion-label>TITLE</ion-label>
@@ -107,22 +113,13 @@
             <ion-radio value="Mrs"></ion-radio>
           </ion-item>
         </ion-radio-group>
-      </ion-list>
-    </div>
-    <div class="marginTop">
-      <ion-list>
         <ion-item>
-          <ion-list-header>
-            <ion-label>PERSONAL IMFORMATION</ion-label>
-          </ion-list-header>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Reason<span class="dot">*</span></ion-label>
+          <ion-label position="floating">Name<span class="dot">*</span></ion-label>
           <ion-input></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Date Of Birth</ion-label>
-          <ion-datetime  display-format="MMM DD, YYYY"></ion-datetime>
+          <ion-datetime  display-format="MM/DD/YYYY"></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Mobile<span class="dot">*</span></ion-label>
@@ -130,6 +127,7 @@
         </ion-item>
       </ion-list>
     </div>
+    <!-- List of Gender -->
     <div class="marginTop">
       <ion-list >
         <ion-item>
@@ -149,6 +147,7 @@
         </ion-radio-group>
       </ion-list>
     </div>
+    <!-- List of Nationality -->
     <div class="marginTop">
       <ion-list >
         <ion-item>
@@ -165,6 +164,7 @@
         </ion-item>
       </ion-list>
     </div>
+    <!-- List of ID type -->
     <div class="marginTop">
       <ion-list >
         <ion-item>
@@ -192,6 +192,7 @@
         </ion-radio-group>
       </ion-list>
     </div>
+    <!-- List of ID Information -->
     <div class="marginTop">
       <ion-list >
         <ion-item>
@@ -199,12 +200,73 @@
             <ion-label>ID INFORMATION</ion-label>
           </ion-list-header>
         </ion-item>
+        <ion-item>
+          <ion-label position="floating">ID#<span class="dot">*</span></ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Emirates ID<span class="dot">*</span></ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Area To Visits <span class="dot">*</span></ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+
         <div class="profile">
           <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
         </div>
         <ion-button margin-top expand="block" class="header" >Add Photo</ion-button>
       </ion-list>
     </div>
+    <!-- List of Vehicle -->
+    <div class="marginTop">
+      <ion-list>
+        <ion-item-divider>
+          <ion-list-header>
+            <ion-label>VEHICLE</ion-label>
+          </ion-list-header>
+        </ion-item-divider>
+        <ion-radio-group>
+          <ion-item>
+            <ion-label>Daily Pass Online</ion-label>
+            <ion-radio value="Yes" (click)="selected1('Yes')" [checked]="Yes"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Visitor Pass Online</ion-label>
+            <ion-radio value="No" (click)="selected1('No')"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </div>
+    <!-- Company  Information -->
+    <div class="marginTop">
+      <ion-list >
+        <ion-item>
+          <ion-list-header>
+            <ion-label>COMPANY INFORMATION</ion-label>
+          </ion-list-header>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Address<span class="dot">*</span></ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Email ID<span class="dot">*</span></ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Telephone <span class="dot">*</span></ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Fax <span class="dot">*</span></ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+
+      </ion-list>
+    </div>
+    <!-- List of PassType -->
     <div class="marginTop">
       <ion-list >
         <ion-item>
@@ -238,4 +300,4 @@
       </ion-list>
     </div>
   </ion-content>
-</ion-app>
+

@@ -9,15 +9,22 @@ import {visit} from '@angular/compiler-cli/src/ngtsc/util/src/visitor';
 export class CreatePassPage implements OnInit {
     orderBy;
     daily = 'daily';
-  constructor() {}
-
-  ngOnInit() {
+    Yes = 'Yes';
+    constructor() {}
+ngOnInit() {
     this.selected(this.daily);
-  }
-
-    selected(value: string) {
+    this.selected1(this.orderBy);
+    }
+//Pass Type
+selected(value: string) {
     alert(value);
-    // console.log(this.orderBy);
-        this.orderBy = value;
+    this.orderBy = value;
+    console.log(this.orderBy);
+    }
+
+    selected1(value: string) {
+    alert(value);
+    this.orderBy = value;
+    console.log(this.orderBy);
     }
 }
