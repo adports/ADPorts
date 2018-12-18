@@ -1,11 +1,11 @@
-
-  <!-- Back button with a default href -->
+<!-- Back button with a default href -->
   <ion-header>
     <ion-toolbar class="header">
       <ion-title>Create Ports Pass</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content >
+    <form (ngSubmit)="createPass()">
     <!-- List of PassType -->
     <div class="marginTop">
       <ion-list>
@@ -17,11 +17,11 @@
         <ion-radio-group>
           <ion-item>
             <ion-label>Daily Pass Online</ion-label>
-            <ion-radio value="daily" (click)="selected('daily')" [checked]="daily"></ion-radio>
+            <ion-radio value="Daily Pass Online" (click)="selected('Daily Pass Online')" name="Daily Pass Online" [checked]="daily"></ion-radio>
           </ion-item>
           <ion-item>
             <ion-label>Visitor Pass Online</ion-label>
-            <ion-radio value="pass" (click)="selected('pass')"></ion-radio>
+            <ion-radio value="Visitor Pass Online" (click)="selected('Visitor Pass Online')" name="Visitor Pass Online"></ion-radio>
           </ion-item>
         </ion-radio-group>
       </ion-list>
@@ -34,13 +34,14 @@
             <ion-label>Visit Dates </ion-label>
           </ion-list-header>
         </ion-item-divider>
+
         <ion-item>
           <ion-label>Entry Date & Time</ion-label>
-          <ion-datetime  display-format="MM/DD/YYYY HH:mm"></ion-datetime>
+          <ion-datetime name="dtProposedEntryDate" [(ngModel)]="dtProposedEntryDate"  (ionChange)="updateMyDate(dtProposedEntryDate)"  display-format="MM/DD/YYYY hh:mm A" ></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-label>Exit Date Date & Time</ion-label>
-          <ion-datetime display-format="MM/DD/YYYY HH:mm"></ion-datetime>
+          <ion-datetime name="dtProposedDepartureDate" [(ngModel)]="dtProposedDepartureDate"   disabled ="true" display-format="MM/DD/YYYY hh:mm A"></ion-datetime>
         </ion-item>
       </ion-list>
     </div>
@@ -54,34 +55,22 @@
         </ion-item-divider>
         <ion-item>
           <ion-label position="floating">Reason<span class="dot">*</span></ion-label>
-          <ion-input></ion-input>
+          <ion-input name="strReason" [(ngModel)]="strReason"></ion-input>
         </ion-item>
       </ion-list>
     </div>
     <!-- Ports To Visit  -->
     <div class="marginTop">
-      <ion-list >
+      <ion-list  >
         <ion-item>
           <ion-list-header>
             <ion-label>PORT TO VISIT</ion-label>
           </ion-list-header>
         </ion-item>
         <ion-radio-group>
-          <ion-item>
-            <ion-label>Musaffah Port</ion-label>
-            <ion-radio value="Musaffah"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>Free  Port and  New Port</ion-label>
-            <ion-radio value="Freeport"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>Kalifa Port</ion-label>
-            <ion-radio value="Kalifa"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>Mina Zayead Port</ion-label>
-            <ion-radio value="Mina"></ion-radio>
+          <ion-item *ngFor="let lst of Ports">
+            <ion-label>{{lst.DESCRIPTION}}</ion-label>
+            <ion-radio name="lst" (click)="selectedPort(lst)" [value]="lst" checked ></ion-radio>
           </ion-item>
         </ion-radio-group>
       </ion-list>
@@ -95,35 +84,33 @@
           </ion-list-header>
         </ion-item>
         <ion-item>
-          <ion-list-header>
-            <ion-label>TITLE</ion-label>
-          </ion-list-header>
+          <ion-list-header>TITLE  </ion-list-header>
         </ion-item>
-        <ion-radio-group>
+        <ion-radio-group id="title">
           <ion-item>
             <ion-label>Mr</ion-label>
-            <ion-radio value="Mr"></ion-radio>
+            <ion-radio slot="start"   (ionSelect)="GetTile($event)"   value="Mr"  name="Mr"  checked></ion-radio>
           </ion-item>
           <ion-item>
             <ion-label>Miss</ion-label>
-            <ion-radio value="Miss"></ion-radio>
+            <ion-radio slot="start" (ionSelect)="GetTile($event)"  value="Miss" name="Miss"  ></ion-radio>
           </ion-item>
           <ion-item>
             <ion-label>Mrs</ion-label>
-            <ion-radio value="Mrs"></ion-radio>
+            <ion-radio slot="start" (ionSelect)="GetTile($event)"  value="Mrs" name="Mrs"  ></ion-radio>
           </ion-item>
         </ion-radio-group>
         <ion-item>
           <ion-label position="floating">Name<span class="dot">*</span></ion-label>
-          <ion-input></ion-input>
+          <ion-input name="strFullName" [(ngModel)]="strFullName"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Date Of Birth</ion-label>
-          <ion-datetime  display-format="MM/DD/YYYY"></ion-datetime>
+          <ion-datetime (ionChange)="DateOfBirt($event)" name="date of birth" display-format="MM/DD/YYYY"></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Mobile<span class="dot">*</span></ion-label>
-          <ion-input></ion-input>
+          <ion-input [(ngModel)]="strMobile" name="strMobile" ></ion-input>
         </ion-item>
       </ion-list>
     </div>
@@ -138,11 +125,11 @@
         <ion-radio-group>
           <ion-item>
             <ion-label>Male</ion-label>
-            <ion-radio value="Male"></ion-radio>
+            <ion-radio name="Male" value="Male" (ionSelect)="getGender($event)" checked></ion-radio>
           </ion-item>
           <ion-item>
             <ion-label>Female</ion-label>
-            <ion-radio value="Mrs"></ion-radio>
+            <ion-radio name="Female" value="Female" (ionSelect)="getGender($event)"></ion-radio>
           </ion-item>
         </ion-radio-group>
       </ion-list>
@@ -156,14 +143,14 @@
           </ion-list-header>
         </ion-item>
         <ion-item>
-          <ion-label>-Select-</ion-label>
-          <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-            <ion-select-option value="brown">IDIAN</ion-select-option>
-            <ion-select-option value="blonde">UAE</ion-select-option>
+          <ion-label>Select Nationality</ion-label>
+          <ion-select value="brown" okText="Okay" cancelText="Dismiss" (ionChange)="SelectNationality($event)">
+            <ion-select-option *ngFor="let nationality of strNationality"  name="nationality" [value]="nationality">{{nationality.DESCRIPTION}}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-list>
     </div>
+
     <!-- List of ID type -->
     <div class="marginTop">
       <ion-list >
@@ -175,19 +162,19 @@
         <ion-radio-group>
           <ion-item>
             <ion-label>UID NUMBER</ion-label>
-            <ion-radio value="UID"></ion-radio>
+            <ion-radio (ionSelect)="GetUID($event)" value="UID" checked></ion-radio>
           </ion-item>
           <ion-item>
             <ion-label>Passport</ion-label>
-            <ion-radio value="Passport"></ion-radio>
+            <ion-radio (ionSelect)="GetUID($event)" value="Passport" value="Passport"></ion-radio>
           </ion-item>
           <ion-item>
             <ion-label>Emirates ID</ion-label>
-            <ion-radio value="Emirates"></ion-radio>
+            <ion-radio (ionSelect)="GetUID($event)" value="Emirates" value="Emirates"></ion-radio>
           </ion-item>
           <ion-item>
             <ion-label>Others</ion-label>
-            <ion-radio value="Others"></ion-radio>
+            <ion-radio (ionSelect)="GetUID($event)" value="Others" value="Others"></ion-radio>
           </ion-item>
         </ion-radio-group>
       </ion-list>
@@ -202,21 +189,46 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">ID#<span class="dot">*</span></ion-label>
-          <ion-input></ion-input>
+          <ion-input [(ngModel)]="strID_No" name="strID_No"> </ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Emirates ID<span class="dot">*</span></ion-label>
-          <ion-input></ion-input>
+          <ion-input [(ngModel)]="strEmirateID" name="strEmirateID"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Area To Visits <span class="dot">*</span></ion-label>
-          <ion-input></ion-input>
+          <ion-input [(ngModel)]="strAreaToVisit" name="strAreaToVisit"></ion-input>
         </ion-item>
 
-        <div class="profile">
-          <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
-        </div>
-        <ion-button margin-top expand="block" class="header" >Add Photo</ion-button>
+          <div class="image-upload">
+              <label for="file-input">
+                  <ion-icon class="profile" ios="ios-contact" md="md-contact" *ngIf="!image; else avatara"></ion-icon>
+                  <ion-icon class="camera" ios="ios-camera" md="md-camera"></ion-icon>
+              </label>
+
+              <input id="file-input" type="file" accept="image/*" (change)="changeListener($event)"/>
+              <ng-template #avatara> <ion-avatar>
+                  <img src="{{image}}" alt="">
+              </ion-avatar></ng-template>
+          </div>
+
+
+
+
+
+        <!--<div class="profile">-->
+
+            <!--<ion-icon ios="ios-contact" md="md-contact" *ngIf="!image; else avatara"></ion-icon>-->
+            <!--<ng-template #avatara> <ion-avatar>-->
+                <!--<img src="{{image}}" alt="">-->
+            <!--</ion-avatar></ng-template>-->
+
+             <!--<div class="addphoto">-->
+            <!--<input type="file" class="custom-file-input" accept="image/*" (change)="changeListener($event)">-->
+             <!--</div>-->
+        <!--</div>-->
+        <!--<ion-button  (click)= "Change()"  margin-top expand="block"-->
+                      <!--class="header" > Add Photo</ion-button>-->
       </ion-list>
     </div>
     <!-- List of Vehicle -->
@@ -229,11 +241,11 @@
         </ion-item-divider>
         <ion-radio-group>
           <ion-item>
-            <ion-label>Daily Pass Online</ion-label>
+            <ion-label>Yes</ion-label>
             <ion-radio value="Yes" (click)="selected1('Yes')" [checked]="Yes"></ion-radio>
           </ion-item>
           <ion-item>
-            <ion-label>Visitor Pass Online</ion-label>
+            <ion-label>No</ion-label>
             <ion-radio value="No" (click)="selected1('No')"></ion-radio>
           </ion-item>
         </ion-radio-group>
@@ -249,19 +261,19 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">Address<span class="dot">*</span></ion-label>
-          <ion-input></ion-input>
+          <ion-input [(ngModel)]="strAddress" name="strAddress"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Email ID<span class="dot">*</span></ion-label>
-          <ion-input></ion-input>
+          <ion-input [(ngModel)]="strEmail" name="strEmail"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Telephone <span class="dot">*</span></ion-label>
-          <ion-input></ion-input>
+          <ion-input [(ngModel)]="strTelephone" name="strTelephone"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Fax <span class="dot">*</span></ion-label>
-          <ion-input></ion-input>
+          <ion-input [(ngModel)]="strFax" name="strFax"></ion-input>
         </ion-item>
 
       </ion-list>
@@ -296,9 +308,10 @@
             </ion-row>
           </ion-grid>
         </div>
-        <ion-button margin-top expand="block" class="header" >Add Attachment</ion-button>
-        <ion-button margin-top expand="block" class="header"  (click) ="createPass()" > Submit</ion-button>
+        <ion-button margin-top (click)="Attach()" expand="block" class="header" >Add Attachment</ion-button>
+        <ion-button  margin-top type="submit" expand="block" class="header" > Submit</ion-button>
       </ion-list>
     </div>
+    </form>
   </ion-content>
 

@@ -16,6 +16,9 @@ export class ServicesProvider {
   testServiceOne() {
    return this.http.get('http://172.21.111.48:92/WSTestPass/Wsepass.asmx/GetPorts');
   }
+  NationalitiesService() {
+      return this.http.get('http://172.21.111.48:92/WSTestPass/WSePass.asmx/GetNationalitiesEng')
+  }
 }
 
 

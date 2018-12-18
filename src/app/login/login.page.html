@@ -10,18 +10,19 @@
      <h4>Welocome to Abu Dhabi Ports Pass</h4>
      <small>Login to your account below</small>
   </div>
+    <form (ngSubmit)="validateUsers()">
   <ion-grid>
       <ion-row>
           <ion-col size="12">
             <ion-item>
                 <ion-label  position="floating">User name <span class="dot">*</span></ion-label>
-                <ion-input type="text" [(ngModel)]="username"></ion-input>
+                <ion-input type="text" [(ngModel)]="username" name="username" required></ion-input>
               </ion-item>
           </ion-col>
           <ion-col size="12" >
             <ion-item>
                 <ion-label  position="floating">Password <span class="dot">*</span></ion-label>
-                <ion-input type="passport" [(ngModel)]="password"></ion-input>
+                <ion-input type="passport" [(ngModel)]="password" name="password" required></ion-input>
               </ion-item>
           </ion-col>
         </ion-row>
@@ -30,10 +31,10 @@
 <a href="/Forgot-Password">Forgot Password</a>
 </div>
 <div class="login-btn">
-<ion-button expand="block" class="login"  (click)="validateUsers()">Login</ion-button>
+<ion-button expand="block" [disabled]="!isValid" class="login">Login</ion-button>
 <ion-button expand="block" class="back" >Back</ion-button>
 </div>
-
+    </form>
 </ion-content>
 <div class="bottom">
     <ion-grid>

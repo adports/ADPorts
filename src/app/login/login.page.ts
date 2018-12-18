@@ -10,6 +10,8 @@ export class LoginPage implements OnInit {
     username = '' ;
     password = '';
     login;
+    isValid;
+    // LoginType = 'ccccccc';
 constructor(public http: HttpClient, private router: Router) {
 }
 ngOnInit() {
@@ -17,6 +19,9 @@ ngOnInit() {
     }
 validateUsers() {
         const users = 'username=' + this.username + '&password=' + this.password ;
+        if(users){
+            this.isValid = false;
+        }
         let headers: HttpHeaders = new HttpHeaders();
         headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
         this.http.post('http://172.21.111.47:92/WSTestPass/WSePass.asmx/ValidateUser', users , {headers})
