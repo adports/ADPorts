@@ -20,14 +20,14 @@ export class CreatePassPage implements OnInit {
     strPassType;
     dtProposedEntryDate;
     dtProposedDepartureDate;
-    strHostCompany = 'Abu Dhabi Ports';
-    strHostDepartment = 'Operations';
-    strHostPerson;
-    strHostEmail;
+    strHostCompany;
+    strHostDepartment;
+    strHostPerson = 'Praveen';
+    strHostEmail ='praveen@gmail.com';
     strMobile;
     strTitle = 'Mr';
     strFullName;
-    strFullnameAra;
+    strFullnameAra = '';
     strGender = 'Male';
     dtDOB = new Date();
     strNationality;
@@ -71,16 +71,22 @@ export class CreatePassPage implements OnInit {
     strAttach4Name;
     strAttach4Base64;
     strAttach4Ext;
+    fileData;
     daily = 'Daily Pass Online';
     Yes = 'Yes';
     data;
     strPorts;
     Ports;
      Nationality;
-    private $event: any;
-    private prii ;
-  ;
-constructor(private page: LoginPage, private GetService: ServicesProvider) {
+     pdf1;
+     pdf2;
+     pdf3;
+    pdf4;
+    HostCompany;
+    HostCompany1;
+
+
+    constructor(private page: LoginPage, private GetService: ServicesProvider) {
     }
 
     ngOnInit() {
@@ -88,17 +94,18 @@ constructor(private page: LoginPage, private GetService: ServicesProvider) {
         this.updateMyDate(event);
         this.GetPosts();
         this.GetNationalities();
+        this.HostName();
+        //this.HostDepartment();
    }
   // strPassType
     selected(value: string) {
         this.strPassType = value;
         console.log(this.strPassType);
     }
-    // port
+// port
     selectedPort(port) {
         this.strPorts = port;
     }
-
 
 // Entry Date & Time
     updateMyDate(event) {
@@ -132,7 +139,7 @@ constructor(private page: LoginPage, private GetService: ServicesProvider) {
         console.log(this.dtDOB);
     }
     //  Gender
-    getGender($event){
+    getGender($event) {
         this.Gender = $event;
         console.log(this.Gender);
         this.strGender = this.Gender.detail.value;
@@ -149,42 +156,84 @@ constructor(private page: LoginPage, private GetService: ServicesProvider) {
         alert('add attach');
     }
 
-    selected1(data){
+    selected1(data) {
         this.strVeh = data;
         alert(this.strVeh);
     }
 
-    GetNationalities(){
+    GetNationalities() {
         this.GetService.NationalitiesService().subscribe((res) => {
             this.Nationality = res;
             console.log(this.Nationality);
-            this.strNationality = this.Nationality;
+            // this.strNationality = this.Nationality[0].DESCRIPTION;
         });
     }
     SelectNationality($event) {
-    // this.strNationality = $event;
-    console.log($event);
+        console.log($event);
+    this.strNationality = $event.detail.value.DESCRIPTION;
+    console.log(this.strNationality);
     }
 // Add 64base Photo
 
 
-    changeListener($event): void {
-    alert(JSON.stringify($event));
-     const prii = this.readThis($event.target);
+    changeListener($event , id) {
+       this.readThis($event.target , id);
+
+   //  this.readThis($event.target);
     }
 
-    readThis(inputValue: any): void {
+    readThis(inputValue, id) {
         const file: File = inputValue.files[0];
         const myReader: FileReader = new FileReader();
         myReader.readAsDataURL(file);
         console.log(file);
         console.log(file.size < 100);
-        myReader.onloadend = (e) => {
-            this.image = myReader.result;
-            console.log(this.image + 'image');
+        myReader.onload = (e) => {
+            if (id === 'image') {
+                this.image = myReader.result;
+                const myString = this.image;
+                this.strPhotoBase64 = myString.substr(23).slice(0);
+                console.log(this.strPhotoBase64);
+            } else if (id === 'pdf') {
+                this.pdf = myReader.result;
+            } else if (id === 'pdf1') {
+                this.pdf1 = myReader.result;
+            } else if (id === 'pdf2') {
+                this.pdf2 = myReader.result;
+            } else if (id === 'pdf3') {
+                this.pdf3 = myReader.result;
+            } else if (id === 'pdf4') {
+                this.pdf4 = myReader.result;
+            }
         };
-    }
 
+     }
+ resetFile() {
+            // const file = document.querySelector('.file');
+           this.image = (<HTMLInputElement>document.getElementById('file-input')).value = '';
+           alert(this.image);
+}
+    HostName() {
+        this.GetService.HostNameService().subscribe((res) => {
+            this.HostCompany = res;
+            console.log(this.HostCompany);
+        });
+    }
+    SelectHostName($event) {
+        console.log($event);
+        this.strHostCompany = $event.detail.value.DESCRIPTION;
+        console.log(this.strHostCompany);
+        this.HostDepartment($event.detail.value.LOOKUP_CODE);
+    }
+    HostDepartment(hostname) {
+        this.GetService.HostDepartmentService(hostname).subscribe((res) => {
+         this.strHostDepartment = res;
+            console.log(this.strHostDepartment);
+        });
+    }
+    SelectHostDepartment($event) {
+        console.log($event);
+    }
 
 // createPass Pass
     createPass() {
@@ -193,20 +242,42 @@ constructor(private page: LoginPage, private GetService: ServicesProvider) {
             + 'strPassType' + this.strPassType
             + 'dtProposedEntryDate' + this.dtProposedEntryDate
             + 'dtProposedDepartureDate' + this.dtProposedDepartureDate
-            + 'strReason' + this.strReason
-            + 'strPorts' + this.strPorts
+            + 'strHostCompany' + this.strHostCompany
+            + 'strHostDepartment' + this.strHostDepartment
+            + 'strHostPerson' + this.strHostPerson
+            + 'strEmail' + this.strEmail
+            + 'strMobile' + this.strMobile
             + 'strTitle'  + this.strTitle
+            + 'strFullName'  + this.strFullName
+            + 'strFullnameAra'  + this.strFullnameAra
             + 'strGender' + this.strGender
             + 'dtDOB' + this.dtDOB
+            + 'strNationality' + this.strNationality
+            + 'strReason' + this.strReason
+            + 'strEquipment' + this.strEquipment
+            + 'strRegNo' + this.strRegNo
+            + 'strRegCert' + this.strRegCert
+            + 'strCompCert' + this.strCompCert
+            + 'strLoadTestCert' + this.strLoadTestCert
             + 'strID_type' + this.strID_type
             + 'strID_No' + this.strID_No
-            + 'strEmail' + this.strEmail
-            + 'strAreaToVisit' + this.strAreaToVisit
-            + 'strFax' + this.strFax
+            + 'strEmirateID' + this.strEmirateID
+            + 'strCardNumber' + this.strCardNumber
             + 'strVeh' + this.strVeh
+            + 'strVeh_No' + this.strVeh_No
+            + 'strVehReg' + this.strVehReg
+            + 'strVehPlate' + this.strVehPlate
+            + 'strAreaToVisit' + this.strAreaToVisit
+            + 'strCNIA_No' + this.strCNIA_No
+            + 'strLinked_TokenNo' + this.strLinked_TokenNo
+            + 'strCameraNo' + this.strCameraNo
+            + 'strContract' + this.strContract
+            + 'strPartyName' + this.strPartyName
+            + 'strFax' + this.strFax
             + 'strAddress' + this.strAddress
-            + 'strEmail' + this.strEmail
             + 'strTelephone' + this.strTelephone
+            + 'strPhotoBase64' + this.strPhotoBase64
+            + 'pdf' + this.pdf
         console.log(submitPass);
 
     }

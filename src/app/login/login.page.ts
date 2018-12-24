@@ -11,7 +11,6 @@ export class LoginPage implements OnInit {
     password = '';
     login;
     isValid;
-    // LoginType = 'ccccccc';
 constructor(public http: HttpClient, private router: Router) {
 }
 ngOnInit() {
@@ -24,7 +23,7 @@ validateUsers() {
         }
         let headers: HttpHeaders = new HttpHeaders();
         headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        this.http.post('http://172.21.111.47:92/WSTestPass/WSePass.asmx/ValidateUser', users , {headers})
+        this.http.post('http://172.21.111.48:92/WSTestPass/WSePass.asmx/ValidateUser', users , {headers})
             .subscribe(
                 data => {
                     console.log(data);
@@ -33,7 +32,7 @@ validateUsers() {
                     // @ts-ignore
                     this.login = data.Valid;
                     if (this.login === true) {
-                       return this.router.navigate(['/tabs']);
+                       return this.router.navigate(['/dashboard']);
                     } else {
                         alert('false');
                     }

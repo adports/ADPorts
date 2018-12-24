@@ -145,7 +145,7 @@
         <ion-item>
           <ion-label>Select Nationality</ion-label>
           <ion-select value="brown" okText="Okay" cancelText="Dismiss" (ionChange)="SelectNationality($event)">
-            <ion-select-option *ngFor="let nationality of strNationality"  name="nationality" [value]="nationality">{{nationality.DESCRIPTION}}</ion-select-option>
+            <ion-select-option *ngFor="let nationality of Nationality"  name="nationality" [value]="nationality">{{nationality.DESCRIPTION}}</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-list>
@@ -201,34 +201,22 @@
         </ion-item>
 
           <div class="image-upload">
-              <label for="file-input">
-                  <ion-icon class="profile" ios="ios-contact" md="md-contact" *ngIf="!image; else avatara"></ion-icon>
+              <label for="file-input" *ngIf="!image; else avatara">
+                  <ion-icon class="profile" ios="ios-contact" md="md-contact" ></ion-icon>
                   <ion-icon class="camera" ios="ios-camera" md="md-camera"></ion-icon>
               </label>
 
-              <input id="file-input" type="file" accept="image/*" (change)="changeListener($event)"/>
-              <ng-template #avatara> <ion-avatar>
+              <input id="file-input" class="file" capture="camera"  type="file" accept="image/*" (change)="changeListener($event, 'image')"/>
+              <ng-template #avatara>
+              <ion-avatar>
                   <img src="{{image}}" alt="">
-              </ion-avatar></ng-template>
+                  <ion-icon class="remove" (click)="resetFile()" ios="ios-close" md="md-close"></ion-icon>
+              </ion-avatar>
+
+                  <!--<ion-button for="file-input" (click)="resetFile($event)">Reset</ion-button>-->
+              </ng-template>
+
           </div>
-
-
-
-
-
-        <!--<div class="profile">-->
-
-            <!--<ion-icon ios="ios-contact" md="md-contact" *ngIf="!image; else avatara"></ion-icon>-->
-            <!--<ng-template #avatara> <ion-avatar>-->
-                <!--<img src="{{image}}" alt="">-->
-            <!--</ion-avatar></ng-template>-->
-
-             <!--<div class="addphoto">-->
-            <!--<input type="file" class="custom-file-input" accept="image/*" (change)="changeListener($event)">-->
-             <!--</div>-->
-        <!--</div>-->
-        <!--<ion-button  (click)= "Change()"  margin-top expand="block"-->
-                      <!--class="header" > Add Photo</ion-button>-->
       </ion-list>
     </div>
     <!-- List of Vehicle -->
@@ -278,6 +266,35 @@
 
       </ion-list>
     </div>
+      <!-- Host Name -->
+      <div class="marginTop">
+        <ion-list >
+          <ion-item>
+            <ion-list-header>
+              <ion-label>HOST INFORMATION</ion-label>
+            </ion-list-header>
+          </ion-item>
+          <ion-item>
+            <ion-label>Select Host Name</ion-label>
+            <ion-select value="brown" okText="Okay" cancelText="Dismiss" (ionChange)="SelectHostName($event)">
+              <ion-select-option *ngFor="let hostname of HostCompany"  name="hostname" [value]="hostname">{{hostname.DESCRIPTION}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label> Department Name</ion-label>
+            <ion-select value="brown" okText="Okay" cancelText="Dismiss" (ionChange)="SelectHostDepartment($event)">
+              <ion-select-option *ngFor="let hostname1 of HostCompany"  name="hostname1" [value]="hostname1">{{hostname1.DESCRIPTION}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label> Person Name</ion-label>
+            <ion-select value="brown" okText="Okay" cancelText="Dismiss">
+              <ion-select-option value="brown">Praveen</ion-select-option>
+              <ion-select-option value="blonde">UAE</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </div>
     <!-- List of PassType -->
     <div class="marginTop">
       <ion-list >
@@ -286,24 +303,46 @@
             <ion-label>ATTACHMENT</ion-label>
           </ion-list-header>
         </ion-item>
-
         <div class="attachment">
           <ion-grid>
             <ion-row >
               <ion-col size-xs="6" size-sm="6" size-lg="3" size-xl="6" >
-                <!-- Advanced: explicity set the icon for each platform -->
-                <ion-icon ios="ios-link" md="md-link"></ion-icon>
+                  <label for="pdf">
+                  <ion-icon   ios="ios-link" md="md-link" *ngIf="!pdf; else avatara1"></ion-icon>
+                  </label>
+                  <ng-template #avatara1>
+                      <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
+                  </ng-template>
+                  <input id="pdf"  class="file"  type="file" accept="pdf/*" (change)="changeListener($event, 'pdf')"/>
               </ion-col>
               <ion-col size-xs="6" size-sm="6" size-lg="6" size-xl="6" >
-                <ion-icon ios="ios-link" md="md-link"></ion-icon>
+                <label for="pdf1">
+                  <ion-icon   ios="ios-link" md="md-link" *ngIf="!pdf1; else avatara2"></ion-icon>
+                </label>
+                <ng-template #avatara2>
+                  <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
+                </ng-template>
+                <input id="pdf1"  class="file"  type="file" accept="pdf/*" (change)="changeListener($event, 'pdf1')"/>
               </ion-col>
             </ion-row>
             <ion-row >
               <ion-col size-xs="6" size-sm="6" size-lg="6" size-xl="6" >
-                <ion-icon ios="ios-link" md="md-link"></ion-icon>
+                <label for="pdf2">
+                  <ion-icon   ios="ios-link" md="md-link" *ngIf="!pdf2; else avatara3"></ion-icon>
+                </label>
+                <ng-template #avatara3>
+                  <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
+                </ng-template>
+                <input id="pdf2"  class="file"  type="file" accept="pdf/*" (change)="changeListener($event, 'pdf2')"/>
               </ion-col>
               <ion-col size-xs="6" size-sm="6" size-lg="6" size-xl="6" >
-                <ion-icon ios="ios-link" md="md-link"></ion-icon>
+                <label for="pdf3">
+                  <ion-icon   ios="ios-link" md="md-link" *ngIf="!pdf3; else avatara4"></ion-icon>
+                </label>
+                <ng-template #avatara4>
+                  <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
+                </ng-template>
+                <input id="pdf3"  class="file"  type="file" accept="pdf/*" (change)="changeListener($event, 'pdf3')"/>
               </ion-col>
             </ion-row>
           </ion-grid>

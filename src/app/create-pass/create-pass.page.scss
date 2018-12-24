@@ -23,16 +23,45 @@ ion-icon{font-size: 50px;}
 
 
 ion-avatar {
-  //max-width: 100%;
-  //border: 0;
-  //display: inline-block;
-  //width: 120px;
-  //height: 120px;
-  //border-radius: 50%;
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  margin: 20px 0 0 0;
+  .remove{    position: absolute;
+    right: -14px;
+    bottom: -12px;
+    font-size: 31px;
+    font-weight: 900;
+    color: #3880ff;}
 }
-.image-upload{text-align: center;
+.image-upload{
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  min-height: 125px;
 input {
   display: none;
-}}
+}
+  .profile {
+    text-align: center;
+    margin: 20px 0 0 0;
+    position: relative;
+    font-size: 100px;
+    display: block;
+    background: #fff;
+    width: 100%;
+    color: rgba(0,0,0,0.2);
+  }
+  .camera {
+    position: absolute;
+    bottom: 16px;
+    font-size: 37px;
+    padding: 0 0px 6px 5px;
+    color: #3880ff;
+  }
+}
 
+#pdf, #pdf1, #pdf2, #pdf3{display: none}
 
