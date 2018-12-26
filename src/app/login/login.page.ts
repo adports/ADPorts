@@ -32,7 +32,7 @@ validateUsers() {
                     // @ts-ignore
                     this.login = data.Valid;
                     if (this.login === true) {
-                       return this.router.navigate(['/dashboard']);
+                       return this.router.navigate(['/createpass']);
                     } else {
                         alert('false');
                     }

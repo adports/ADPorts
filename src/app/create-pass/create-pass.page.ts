@@ -22,7 +22,7 @@ export class CreatePassPage implements OnInit {
     dtProposedDepartureDate;
     strHostCompany;
     strHostDepartment;
-    strHostPerson = 'Praveen';
+    strHostPerson;
     strHostEmail ='praveen@gmail.com';
     strMobile;
     strTitle = 'Mr';
@@ -84,6 +84,8 @@ export class CreatePassPage implements OnInit {
     pdf4;
     HostCompany;
     HostCompany1;
+    Department;
+    strPerson ;
 
 
     constructor(private page: LoginPage, private GetService: ServicesProvider) {
@@ -216,22 +218,37 @@ export class CreatePassPage implements OnInit {
     HostName() {
         this.GetService.HostNameService().subscribe((res) => {
             this.HostCompany = res;
-            console.log(this.HostCompany);
         });
     }
     SelectHostName($event) {
         console.log($event);
-        this.strHostCompany = $event.detail.value.DESCRIPTION;
-        console.log(this.strHostCompany);
+        this.strHostCompany = $event.detail.value.LOOKUP_CODE;
+        alert(this.strHostCompany);
         this.HostDepartment($event.detail.value.LOOKUP_CODE);
     }
-    HostDepartment(hostname) {
-        this.GetService.HostDepartmentService(hostname).subscribe((res) => {
-         this.strHostDepartment = res;
-            console.log(this.strHostDepartment);
+    HostDepartment(strHostCompany) {
+        this.GetService.HostDepartmentService(strHostCompany).subscribe((res) => {
+         this.Department = res;
         });
     }
     SelectHostDepartment($event) {
+        console.log($event);
+        this.strHostDepartment = $event.detail.value.LOOKUP_CODE;
+        alert(this.strHostCompany);
+        alert(this.strHostDepartment);
+        this.HostPerson($event.detail.value.LOOKUP_CODE , $event.detail.value.LOOKUP_CODE);
+    }
+
+    HostPerson(strHostCompany , strHostDepartment) {
+        strHostCompany = this.strHostCompany;
+        this.GetService.HostPersonService(strHostCompany , strHostDepartment).subscribe((res) => {
+            this.strHostPerson = res;
+            console.log(this.strHostPerson);
+        });
+    }
+
+    SelectHostPerson($event) {
+        alert(this.strHostCompany);
         console.log($event);
     }
 

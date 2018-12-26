@@ -283,14 +283,13 @@
           <ion-item>
             <ion-label> Department Name</ion-label>
             <ion-select value="brown" okText="Okay" cancelText="Dismiss" (ionChange)="SelectHostDepartment($event)">
-              <ion-select-option *ngFor="let hostname1 of HostCompany"  name="hostname1" [value]="hostname1">{{hostname1.DESCRIPTION}}</ion-select-option>
+              <ion-select-option *ngFor="let strHostDepartment of Department"  name="strHostDepartment" [value]="strHostDepartment">{{strHostDepartment.LOOKUP_CODE}}</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item>
             <ion-label> Person Name</ion-label>
-            <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-              <ion-select-option value="brown">Praveen</ion-select-option>
-              <ion-select-option value="blonde">UAE</ion-select-option>
+            <ion-select value="brown" okText="Okay" cancelText="Dismiss" (ionChange)="SelectHostPerson($event)">
+              <ion-select-option *ngFor="let person of strHostPerson"  name="person" [value]="person">{{person.DESCRIPTION}}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-list>
