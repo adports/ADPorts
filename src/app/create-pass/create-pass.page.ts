@@ -11,25 +11,24 @@ import {ServicesProvider} from '../apitest/test.service';
 })
 export class CreatePassPage implements OnInit {
     image;
-    pdf;
     title;
     Gender;
     uad;
     strLoginType = 'CUSTOMER';
     strLoginId = 'alkhat';
     strPassType;
-    dtProposedEntryDate;
-    dtProposedDepartureDate;
+    dtProposedEntryDate = moment().format('');
+    dtProposedDepartureDate = moment(this.dtProposedEntryDate).add(1, 'days').format();
     strHostCompany;
     strHostDepartment;
     strHostPerson;
-    strHostEmail ='praveen@gmail.com';
+    strHostEmail;
     strMobile;
     strTitle = 'Mr';
     strFullName;
     strFullnameAra = '';
     strGender = 'Male';
-    dtDOB = new Date();
+    dtDOB = moment().format();
     strNationality;
     strReason;
     strEquipment;
@@ -72,51 +71,83 @@ export class CreatePassPage implements OnInit {
     strAttach4Base64;
     strAttach4Ext;
     fileData;
-    daily = 'Daily Pass Online';
-    Yes = 'Yes';
+    No = 'No';
     data;
     strPorts;
     Ports;
-     Nationality;
-     pdf1;
-     pdf2;
-     pdf3;
+    passType;
+    strPassTyp;
+    Nationality;
+    pdf;
+    pdf1;
+    pdf2;
+    pdf3;
     pdf4;
     HostCompany;
     HostCompany1;
     Department;
-    strPerson ;
+    strPerson;
+     IDs;
+     Vehicle = false;
+     VehicleReg;
+    VehiclePlate;
+    mySortingFunction;
+    private strPdfBase64: string;
+    Attachment ;
 
 
     constructor(private page: LoginPage, private GetService: ServicesProvider) {
     }
 
     ngOnInit() {
-        this.selected(this.daily);
+        // this.selectedPass();
         this.updateMyDate(event);
         this.GetPosts();
         this.GetNationalities();
         this.HostName();
-        //this.HostDepartment();
-   }
-  // strPassType
-    selected(value: string) {
-        this.strPassType = value;
+        this.GetPassType();
+        this.GetIDs();
+        this.GetVeh();
+        // this.updateMyDate(event);
+    }
+
+// strPassType
+    selectedPass(pass) {
+        this.strPassType = pass.DESCRIPTION;
+        // alert(this.strPassType);
         console.log(this.strPassType);
     }
+
 // port
     selectedPort(port) {
-        this.strPorts = port;
+        this.strPorts = port.DESCRIPTION;
+        console.log(this.strPorts);
     }
 
-// Entry Date & Time
-    updateMyDate(event) {
-        const firstDate = moment(event);
-        this.dtProposedEntryDate = firstDate.format();
-        const dtProposedEntryDate = moment(firstDate).add(1, 'days');
-        this.dtProposedDepartureDate = dtProposedEntryDate.format();
-
+// // Entry Date & Time
+//     updateMyDate(event) {
+//         const firstDate = moment(event);
+//         this.dtProposedEntryDate = firstDate.format();
+//         const dtProposedEntryDate = moment(firstDate).add(1, 'days');
+//         this.dtProposedDepartureDate = dtProposedEntryDate.format();
+//
+//     }
+    updateMyDate(dtProposedEntryDate) {
+        console.log(dtProposedEntryDate);
+        this.dtProposedDepartureDate = moment(this.dtProposedEntryDate).add(1, 'days').format();
+        console.log(this.dtProposedDepartureDate);
     }
+
+// GET PASSTYPE
+    GetPassType() {
+        this.GetService.GetPassType().subscribe((res) => {
+            console.log(JSON.stringify(res));
+            this.passType = res;
+            this.strPassType = this.passType[0].DESCRIPTION;
+
+        });
+    }
+
 // strPorts
     GetPosts() {
         this.GetService.testServiceOne().subscribe((res) => {
@@ -124,6 +155,14 @@ export class CreatePassPage implements OnInit {
             console.log(this.Ports);
             this.strPorts = this.Ports[0].DESCRIPTION;
         });
+    }
+// strGetID
+    GetIDs() {
+        this.GetService.GetIDService().subscribe((res => {
+            this.IDs = res;
+            console.log(this.IDs);
+            this.strID_type = this.IDs[0].DESCRIPTION;
+        }));
     }
 // strTitle
     GetTile($event) {
@@ -136,16 +175,19 @@ export class CreatePassPage implements OnInit {
 
     // Date of Birth
     DateOfBirt($event) {
+        console.log($event);
         this.dtDOB = $event.detail.value;
         // this.dtDOB = this.dtDOB.detail.value;
         console.log(this.dtDOB);
     }
+
     //  Gender
     getGender($event) {
         this.Gender = $event;
         console.log(this.Gender);
         this.strGender = this.Gender.detail.value;
     }
+
     // Get UAD Type
     GetUID($event) {
         this.uad = $event;
@@ -154,13 +196,13 @@ export class CreatePassPage implements OnInit {
     }
 
 
-    Attach() {
-        alert('add attach');
-    }
-
     selected1(data) {
         this.strVeh = data;
         alert(this.strVeh);
+        if (this.strVeh === this.No) {
+            this.Vehicle = false;
+        } else { this.Vehicle = true; }
+
     }
 
     GetNationalities() {
@@ -170,85 +212,167 @@ export class CreatePassPage implements OnInit {
             // this.strNationality = this.Nationality[0].DESCRIPTION;
         });
     }
+
+    GetVeh() {
+        this.GetService.GetVehService().subscribe((res) => {
+            this.VehicleReg = res;
+            console.log(this.VehicleReg);
+            // this.strNationality = this.VehicleReg[0].DESCRIPTION;
+        });
+    }
+    SelectGetVeh($event) {
+        console.log($event);
+        this.strVehReg = $event.detail.value.DESCRIPTION;
+        console.log(this.strVehReg + ' vehicle');
+        this.GetVehPlate(this.strVehReg);
+    }
+    GetVehPlate(strVehReg) {
+        alert(strVehReg);
+        this.GetService.GetVehPlateService(strVehReg).subscribe((res) => {
+            this.VehiclePlate = res;
+            console.log(this.VehiclePlate);
+            // this.strNationality = this.VehicleReg[0].DESCRIPTION;
+        });
+    }
+    SelectGetVehPlate($event) {
+        alert(this.strVehReg);
+        console.log($event);
+    }
     SelectNationality($event) {
         console.log($event);
-    this.strNationality = $event.detail.value.DESCRIPTION;
-    console.log(this.strNationality);
+        this.strNationality = $event.detail.value.DESCRIPTION;
+        console.log(this.strNationality);
     }
+
+
+
 // Add 64base Photo
-
-
-    changeListener($event , id) {
-       this.readThis($event.target , id);
-
-   //  this.readThis($event.target);
+changeListener($event, id) {
+        this.readThis($event.target, id);
     }
 
-    readThis(inputValue, id) {
+readThis(inputValue, id) {
         const file: File = inputValue.files[0];
-        const myReader: FileReader = new FileReader();
-        myReader.readAsDataURL(file);
-        console.log(file);
-        console.log(file.size < 100);
-        myReader.onload = (e) => {
-            if (id === 'image') {
-                this.image = myReader.result;
-                const myString = this.image;
-                this.strPhotoBase64 = myString.substr(23).slice(0);
-                console.log(this.strPhotoBase64);
-            } else if (id === 'pdf') {
-                this.pdf = myReader.result;
-            } else if (id === 'pdf1') {
-                this.pdf1 = myReader.result;
-            } else if (id === 'pdf2') {
-                this.pdf2 = myReader.result;
-            } else if (id === 'pdf3') {
-                this.pdf3 = myReader.result;
-            } else if (id === 'pdf4') {
-                this.pdf4 = myReader.result;
-            }
-        };
-
-     }
- resetFile() {
-            // const file = document.querySelector('.file');
-           this.image = (<HTMLInputElement>document.getElementById('file-input')).value = '';
-           alert(this.image);
+        const fileSize = (Math.round(file.size * 100 / 1024) / 100);
+        alert(fileSize);
+        if (fileSize > 0 && fileSize <= 100) {
+            alert('0');
+            const myReader: FileReader = new FileReader();
+            myReader.readAsDataURL(file);
+            myReader.onload = (e) => {
+                if (id === 'image') {
+                    this.image = myReader.result;
+                    const myString = this.image;
+                    this.strPhotoBase64 = myString.substr(23).slice(0);
+                    console.log(this.strPhotoBase64);
+                }
+            };
+        } else {
+            console.log('Hale Magya less than 100 size enter maadle');
+    }
 }
-    HostName() {
+
+// Add 64base PDF
+changeListenerPdf($event, id) {
+        console.log($event,  id);
+        this.readThisPdf($event.target, id);
+    }
+
+
+readThisPdf(inputValue, id) {
+        const file: File = inputValue.files[0];
+        const fileSize = (Math.round(file.size * 100 / 1024) / 100);
+        alert(fileSize);
+            if (fileSize > 0 && fileSize <= 100) {
+            const myReader: FileReader = new FileReader();
+            myReader.readAsDataURL(file);
+            myReader.onload = (e) => {
+                if ( id === 'Attachment' ) {
+                    this.pdf = myReader.result;
+                    const myString = this.pdf;
+                    this.pdf = myString.substr(23).slice(0);
+                    console.log(this.pdf);
+                } else if (id === 'Attachment-1') {
+                    this.pdf1 = myReader.result;
+                    const myString = this.pdf1;
+                    this.pdf1 = myString.substr(23).slice(0);
+                    console.log(this.pdf1);
+                } else if (id === 'Attachment-2') {
+                    this.pdf2 = myReader.result;
+                    const myString = this.pdf2;
+                    this.pdf2 = myString.substr(23).slice(0);
+                    console.log(this.pdf2);
+                } else if (id === 'Attachment-3') {
+                    this.pdf3 = myReader.result;
+                    const myString = this.pdf3;
+                    this.pdf3 = myString.substr(23).slice(0);
+                    console.log(this.pdf3);
+                }
+            };
+        } else {
+            console.log('Hale Magya less than 100 size enter maadle');
+        }
+    }
+
+
+resetFile(id) {
+        // const file = document.querySelector('.file');
+        this.image = (<HTMLInputElement>document.getElementById('file-input')).value = '';
+
+        // this.pdf = (<HTMLInputElement>document.getElementById('Attachment')).value = '';
+        // this.pdf1 = (<HTMLInputElement>document.getElementById('Attachment-1')).value = '';
+
+     if (id === 'pdf') {
+         alert((<HTMLInputElement>document.getElementById('Attachment')).value);
+         this.pdf = (<HTMLInputElement>document.getElementById('Attachment')).value = '';
+     } else if (id === 'pdf1') {
+         this.pdf1 = (<HTMLInputElement>document.getElementById('Attachment-1')).value = '';
+     } else if (id === 'pdf2'){
+         this.pdf2 = (<HTMLInputElement>document.getElementById('Attachment-2')).value = '';
+     } else if (id === 'pdf3') {
+         this.pdf3 = (<HTMLInputElement>document.getElementById('Attachment-3')).value = '';
+     }
+    }
+
+
+HostName() {
         this.GetService.HostNameService().subscribe((res) => {
             this.HostCompany = res;
         });
     }
-    SelectHostName($event) {
+
+SelectHostName($event) {
         console.log($event);
         this.strHostCompany = $event.detail.value.LOOKUP_CODE;
         alert(this.strHostCompany);
         this.HostDepartment($event.detail.value.LOOKUP_CODE);
     }
-    HostDepartment(strHostCompany) {
+
+HostDepartment(strHostCompany) {
         this.GetService.HostDepartmentService(strHostCompany).subscribe((res) => {
-         this.Department = res;
+            this.Department = res;
         });
     }
-    SelectHostDepartment($event) {
+
+SelectHostDepartment($event) {
         console.log($event);
         this.strHostDepartment = $event.detail.value.LOOKUP_CODE;
         alert(this.strHostCompany);
         alert(this.strHostDepartment);
-        this.HostPerson($event.detail.value.LOOKUP_CODE , $event.detail.value.LOOKUP_CODE);
+        this.HostPerson($event.detail.value.LOOKUP_CODE, $event.detail.value.LOOKUP_CODE);
     }
 
-    HostPerson(strHostCompany , strHostDepartment) {
+HostPerson(strHostCompany, strHostDepartment) {
         strHostCompany = this.strHostCompany;
-        this.GetService.HostPersonService(strHostCompany , strHostDepartment).subscribe((res) => {
+        alert(strHostCompany + 'p1');
+        alert(strHostDepartment + 'p2');
+        this.GetService.HostPersonService(strHostCompany, strHostDepartment).subscribe((res) => {
             this.strHostPerson = res;
             console.log(this.strHostPerson);
         });
     }
 
     SelectHostPerson($event) {
-        alert(this.strHostCompany);
         console.log($event);
     }
 
@@ -259,14 +383,15 @@ export class CreatePassPage implements OnInit {
             + 'strPassType' + this.strPassType
             + 'dtProposedEntryDate' + this.dtProposedEntryDate
             + 'dtProposedDepartureDate' + this.dtProposedDepartureDate
+            + 'strPorts'  + this.strPorts
             + 'strHostCompany' + this.strHostCompany
             + 'strHostDepartment' + this.strHostDepartment
             + 'strHostPerson' + this.strHostPerson
             + 'strEmail' + this.strEmail
             + 'strMobile' + this.strMobile
-            + 'strTitle'  + this.strTitle
-            + 'strFullName'  + this.strFullName
-            + 'strFullnameAra'  + this.strFullnameAra
+            + 'strTitle' + this.strTitle
+            + 'strFullName' + this.strFullName
+            + 'strFullnameAra' + this.strFullnameAra
             + 'strGender' + this.strGender
             + 'dtDOB' + this.dtDOB
             + 'strNationality' + this.strNationality
@@ -294,7 +419,7 @@ export class CreatePassPage implements OnInit {
             + 'strAddress' + this.strAddress
             + 'strTelephone' + this.strTelephone
             + 'strPhotoBase64' + this.strPhotoBase64
-            + 'pdf' + this.pdf
+            + 'pdf' + this.pdf;
         console.log(submitPass);
 
     }

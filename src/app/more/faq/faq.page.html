@@ -1,9 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>faq</ion-title>
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="createpass"></ion-back-button>
+    </ion-buttons>
+    <ion-title>FAQ</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content padding>
+<ion-content >
+  <div class="half">
+    <div class="tab">
+      <input id="tab-one" type="checkbox" name="tabs">
+      <label for="tab-one">How do I log in to app ?</label>
+      <div class="tab-content">
+        <dl>
+          <dt><ion-icon name="checkmark-circle-outline"></ion-icon>
+            If you are in an online E-pass user you can use your online E-Pass username & Password, or click to register to create a new user. </dt>
+        </dl>
+      </div>
+    </div>
+    <div class="tab">
+      <input id="tab-two" type="checkbox" name="tabs">
+      <label for="tab-two">Label Two</label>
+      <div class="tab-content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.</p>
+      </div>
+    </div>
+    <div class="tab">
+      <input id="tab-three" type="checkbox" name="tabs">
+      <label for="tab-three">Label Three</label>
+      <div class="tab-content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.</p>
+      </div>
+    </div>
+  </div>
 
 </ion-content>

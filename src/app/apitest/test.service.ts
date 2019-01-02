@@ -20,14 +20,36 @@ export class ServicesProvider {
 
   constructor(public http: HttpClient) {
   }
+  // PASSTYPE SERVICE
+    GetPassType(){
+      return this.http.get('http://172.21.111.48:92/WSTestPass/WSePass.asmx/GetPassTypesOnline');
+    }
 // GET PORTS
   testServiceOne() {
    return this.http.get('http://172.21.111.48:92/WSTestPass/Wsepass.asmx/GetPorts');
   }
+// GET ID TYPE
+ GetIDService() {
+      return this.http.get('http://172.21.111.48:92/WSTestPass/WSePass.asmx/GetIdTypes');
+ }
 // NATIONALITIES
   NationalitiesService() {
       return this.http.get('http://172.21.111.48:92/WSTestPass/WSePass.asmx/GetNationalitiesEng');
   }
+// GET VEHICLE
+  GetVehService() {
+      return this.http.get('http://172.21.111.48:92/WSTestPass/WSePass.asmx/GetVehReg');
+  }
+  // GET VEHICLE PLATE CODE
+  GetVehPlateService(strVehReg) {
+      const plate = 'vehreg=' + strVehReg;
+      console.log(plate);
+      let headers: HttpHeaders = new HttpHeaders();
+      headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
+      return this.http.post('http://172.21.111.48:92/WSTestPass/WSePass.asmx/GetPlateCodes', plate, {headers});
+  }
+
+
 // HOST NAME
   HostNameService() {
         return this.http.get('http://172.21.111.48:92/WSTestPass/WSePass.asmx/GetHostCompanies');

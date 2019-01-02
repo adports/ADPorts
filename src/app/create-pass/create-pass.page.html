@@ -15,13 +15,9 @@
           </ion-list-header>
         </ion-item-divider>
         <ion-radio-group>
-          <ion-item>
-            <ion-label>Daily Pass Online</ion-label>
-            <ion-radio value="Daily Pass Online" (click)="selected('Daily Pass Online')" name="Daily Pass Online" [checked]="daily"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>Visitor Pass Online</ion-label>
-            <ion-radio value="Visitor Pass Online" (click)="selected('Visitor Pass Online')" name="Visitor Pass Online"></ion-radio>
+          <ion-item *ngFor="let pass of passType">
+            <ion-label>{{pass.DESCRIPTION}}</ion-label>
+            <ion-radio name="pass" (click)="selectedPass(pass)" [value]="pass" checked ></ion-radio>
           </ion-item>
         </ion-radio-group>
       </ion-list>
@@ -37,11 +33,11 @@
 
         <ion-item>
           <ion-label>Entry Date & Time</ion-label>
-          <ion-datetime name="dtProposedEntryDate" [(ngModel)]="dtProposedEntryDate"  (ionChange)="updateMyDate(dtProposedEntryDate)"  display-format="MM/DD/YYYY hh:mm A" ></ion-datetime>
+          <ion-datetime name="dtProposedEntryDate" [(ngModel)]="dtProposedEntryDate"  [value]="dtProposedEntryDate"  (ionChange)="updateMyDate(dtProposedEntryDate)"  display-format="MM/DD/YYYY hh:mm A" ></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-label>Exit Date Date & Time</ion-label>
-          <ion-datetime name="dtProposedDepartureDate" [(ngModel)]="dtProposedDepartureDate"   disabled ="true" display-format="MM/DD/YYYY hh:mm A"></ion-datetime>
+          <ion-datetime name="dtProposedDepartureDate" [(ngModel)]="dtProposedDepartureDate"  [value]="dtProposedDepartureDate"   disabled ="true" display-format="MM/DD/YYYY hh:mm A"></ion-datetime>
         </ion-item>
       </ion-list>
     </div>
@@ -106,7 +102,7 @@
         </ion-item>
         <ion-item>
           <ion-label>Date Of Birth</ion-label>
-          <ion-datetime (ionChange)="DateOfBirt($event)" name="date of birth" display-format="MM/DD/YYYY"></ion-datetime>
+          <ion-datetime (ionChange)="DateOfBirt($event)" [value]="dtDOB" display-format="MM/DD/YYYY"></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Mobile<span class="dot">*</span></ion-label>
@@ -160,22 +156,22 @@
           </ion-list-header>
         </ion-item>
         <ion-radio-group>
-          <ion-item>
-            <ion-label>UID NUMBER</ion-label>
-            <ion-radio (ionSelect)="GetUID($event)" value="UID" checked></ion-radio>
+          <ion-item *ngFor="let stID of IDs">
+            <ion-label>{{stID.DESCRIPTION}}</ion-label>
+            <ion-radio (ionSelect)="GetUID($event)" [value]="stID" checked></ion-radio>
           </ion-item>
-          <ion-item>
-            <ion-label>Passport</ion-label>
-            <ion-radio (ionSelect)="GetUID($event)" value="Passport" value="Passport"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>Emirates ID</ion-label>
-            <ion-radio (ionSelect)="GetUID($event)" value="Emirates" value="Emirates"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>Others</ion-label>
-            <ion-radio (ionSelect)="GetUID($event)" value="Others" value="Others"></ion-radio>
-          </ion-item>
+          <!--<ion-item>-->
+            <!--<ion-label>Passport</ion-label>-->
+            <!--<ion-radio (ionSelect)="GetUID($event)" value="Passport" value="Passport"></ion-radio>-->
+          <!--</ion-item>-->
+          <!--<ion-item>-->
+            <!--<ion-label>Emirates ID</ion-label>-->
+            <!--<ion-radio (ionSelect)="GetUID($event)" value="Emirates" value="Emirates"></ion-radio>-->
+          <!--</ion-item>-->
+          <!--<ion-item>-->
+            <!--<ion-label>Others</ion-label>-->
+            <!--<ion-radio (ionSelect)="GetUID($event)" value="Others" value="Others"></ion-radio>-->
+          <!--</ion-item>-->
         </ion-radio-group>
       </ion-list>
     </div>
@@ -205,11 +201,10 @@
                   <ion-icon class="profile" ios="ios-contact" md="md-contact" ></ion-icon>
                   <ion-icon class="camera" ios="ios-camera" md="md-camera"></ion-icon>
               </label>
-
-              <input id="file-input" class="file" capture="camera"  type="file" accept="image/*" (change)="changeListener($event, 'image')"/>
+            <input id="file-input" class="file" capture="camera"  (click)="resetFile('image')" type="file" accept="image/*" (change)="changeListener($event, 'image')"/>
               <ng-template #avatara>
               <ion-avatar>
-                  <img src="{{image}}" alt="">
+                  <img src="{{image}}" alt="" >
                   <ion-icon class="remove" (click)="resetFile()" ios="ios-close" md="md-close"></ion-icon>
               </ion-avatar>
 
@@ -230,15 +225,45 @@
         <ion-radio-group>
           <ion-item>
             <ion-label>Yes</ion-label>
-            <ion-radio value="Yes" (click)="selected1('Yes')" [checked]="Yes"></ion-radio>
+            <ion-radio value="Yes" (click)="selected1('Yes')" ></ion-radio>
           </ion-item>
           <ion-item>
             <ion-label>No</ion-label>
-            <ion-radio value="No" (click)="selected1('No')"></ion-radio>
+            <ion-radio value="No" (click)="selected1('No')" [checked]="No"></ion-radio>
           </ion-item>
         </ion-radio-group>
       </ion-list>
     </div>
+      <!-- Vehicle  Information-->
+      <div class="marginTop" *ngIf="Vehicle">
+        <ion-list>
+          <ion-item-divider>
+            <ion-list-header>
+              <ion-label>VEHICLE</ion-label>
+            </ion-list-header>
+          </ion-item-divider>
+          <ion-item>
+            <ion-label position="floating">Reason<span class="dot">*</span></ion-label>
+            <ion-input name="strReason" [(ngModel)]="strReason"></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-list >
+          <ion-item>
+            <ion-label>Select Vehicle Registration </ion-label>
+            <ion-select value="brown" okText="Okay" cancelText="Dismiss" (ionChange)="SelectGetVeh($event)">
+              <ion-select-option *ngFor="let VehReg of VehicleReg"  name="VehReg" [value]="VehReg">{{VehReg.DESCRIPTION}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <ion-list >
+          <ion-item>
+            <ion-label>Select Vehicle Plate </ion-label>
+            <ion-select value="brown" okText="Okay" cancelText="Dismiss" (ionChange)="SelectGetVehPlate($event)">
+              <ion-select-option *ngFor="let VehRegPlate of VehiclePlate | keyvalue:mySortingFunction"  name="VehRegPlate" [value]="VehRegPlate.value">{{VehRegPlate.value}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </div>
     <!-- Company  Information -->
     <div class="marginTop">
       <ion-list >
@@ -306,47 +331,52 @@
           <ion-grid>
             <ion-row >
               <ion-col size-xs="6" size-sm="6" size-lg="3" size-xl="6" >
-                  <label for="pdf">
-                  <ion-icon   ios="ios-link" md="md-link" *ngIf="!pdf; else avatara1"></ion-icon>
+                  <label for="Attachment" *ngIf="!pdf; else avatara1">
+                  <ion-icon   ios="ios-link" md="md-link"></ion-icon>
                   </label>
-                  <ng-template #avatara1>
+                <input id="Attachment" (click)="resetFile('pdf')"   class="file"  type="file" accept="pdf/*" (change)="changeListenerPdf($event , 'Attachment')"/>
+
+                 <ng-template #avatara1>
                       <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
                   </ng-template>
-                  <input id="pdf"  class="file"  type="file" accept="pdf/*" (change)="changeListener($event, 'pdf')"/>
+
+
               </ion-col>
               <ion-col size-xs="6" size-sm="6" size-lg="6" size-xl="6" >
-                <label for="pdf1">
-                  <ion-icon   ios="ios-link" md="md-link" *ngIf="!pdf1; else avatara2"></ion-icon>
+                <label for="Attachment-1" *ngIf="!pdf1; else avatara2">
+                  <ion-icon   ios="ios-link" md="md-link"></ion-icon>
                 </label>
+                <input id="Attachment-1" (click)="resetFile('pdf1')"   class="file"  type="file" accept="pdf/*" (change)="changeListenerPdf($event , 'Attachment-1')"/>
+
                 <ng-template #avatara2>
                   <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
                 </ng-template>
-                <input id="pdf1"  class="file"  type="file" accept="pdf/*" (change)="changeListener($event, 'pdf1')"/>
               </ion-col>
             </ion-row>
             <ion-row >
               <ion-col size-xs="6" size-sm="6" size-lg="6" size-xl="6" >
-                <label for="pdf2">
-                  <ion-icon   ios="ios-link" md="md-link" *ngIf="!pdf2; else avatara3"></ion-icon>
+                <label for="Attachment-2" *ngIf="!pdf2; else avatara3">
+                  <ion-icon   ios="ios-link" md="md-link"></ion-icon>
                 </label>
+                <input id="Attachment-2" (click)="resetFile('pdf2')"   class="file"  type="file" accept="pdf/*" (change)="changeListenerPdf($event , 'Attachment-2')"/>
+
                 <ng-template #avatara3>
                   <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
                 </ng-template>
-                <input id="pdf2"  class="file"  type="file" accept="pdf/*" (change)="changeListener($event, 'pdf2')"/>
               </ion-col>
               <ion-col size-xs="6" size-sm="6" size-lg="6" size-xl="6" >
-                <label for="pdf3">
-                  <ion-icon   ios="ios-link" md="md-link" *ngIf="!pdf3; else avatara4"></ion-icon>
+                <label for="Attachment-3" *ngIf="!pdf3; else avatara4">
+                  <ion-icon   ios="ios-link" md="md-link"></ion-icon>
                 </label>
+                <input id="Attachment-3" (click)="resetFile('pdf3')"   class="file"  type="file" accept="pdf/*" (change)="changeListenerPdf($event , 'Attachment-3')"/>
+
                 <ng-template #avatara4>
                   <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
                 </ng-template>
-                <input id="pdf3"  class="file"  type="file" accept="pdf/*" (change)="changeListener($event, 'pdf3')"/>
               </ion-col>
             </ion-row>
           </ion-grid>
         </div>
-        <ion-button margin-top (click)="Attach()" expand="block" class="header" >Add Attachment</ion-button>
         <ion-button  margin-top type="submit" expand="block" class="header" > Submit</ion-button>
       </ion-list>
     </div>

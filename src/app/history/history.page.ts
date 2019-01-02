@@ -12,4 +12,7 @@ export class HistoryPage implements OnInit {
   ngOnInit() {
   }
 
+    segmentChanged($event) {
+        console.log($event);
+    }
 }
