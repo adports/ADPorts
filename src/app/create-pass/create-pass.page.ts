@@ -316,14 +316,9 @@ readThisPdf(inputValue, id) {
 
 
 resetFile(id) {
-        // const file = document.querySelector('.file');
-        this.image = (<HTMLInputElement>document.getElementById('file-input')).value = '';
-
-        // this.pdf = (<HTMLInputElement>document.getElementById('Attachment')).value = '';
-        // this.pdf1 = (<HTMLInputElement>document.getElementById('Attachment-1')).value = '';
-
-     if (id === 'pdf') {
-         alert((<HTMLInputElement>document.getElementById('Attachment')).value);
+       if (id === 'image' ) {
+       this.image = (<HTMLInputElement>document.getElementById('file-input')).value = '';
+       } else if (id === 'pdf') {
          this.pdf = (<HTMLInputElement>document.getElementById('Attachment')).value = '';
      } else if (id === 'pdf1') {
          this.pdf1 = (<HTMLInputElement>document.getElementById('Attachment-1')).value = '';
