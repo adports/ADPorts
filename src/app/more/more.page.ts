@@ -13,7 +13,7 @@ export class MorePage implements OnInit {
   ngOnInit() {
   }
     aboutus() {
-    this.router.navigate(['About']);
+    this.router.navigate(['about']);
 }
 FaQ() {
     this.router.navigate(['faq']);

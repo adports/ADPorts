@@ -5,7 +5,7 @@
     </ion-toolbar>
   </ion-header>
   <ion-content >
-    <form (ngSubmit)="createPass()">
+    <form (ngSubmit)="CreatePass()">
     <!-- List of PassType -->
     <div class="marginTop">
       <ion-list>
@@ -33,11 +33,11 @@
 
         <ion-item>
           <ion-label>Entry Date & Time</ion-label>
-          <ion-datetime name="dtProposedEntryDate" [(ngModel)]="dtProposedEntryDate"  [value]="dtProposedEntryDate"  (ionChange)="updateMyDate(dtProposedEntryDate)"  display-format="MM/DD/YYYY hh:mm A" ></ion-datetime>
+          <ion-datetime name="dtProposedEntryDate" [(ngModel)]="dtProposedEntryDate"  [value]="dtProposedEntryDate"  (ionChange)="updateMyDate(dtProposedEntryDate)"  display-format="DD/MM/YYYY hh:mm A" ></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-label>Exit Date Date & Time</ion-label>
-          <ion-datetime name="dtProposedDepartureDate" [(ngModel)]="dtProposedDepartureDate"  [value]="dtProposedDepartureDate"   disabled ="true" display-format="MM/DD/YYYY hh:mm A"></ion-datetime>
+          <ion-datetime name="dtProposedDepartureDate" [(ngModel)]="dtProposedDepartureDate"  [value]="dtProposedDepartureDate"   disabled ="true" display-format="DD/MM/YYYY hh:mm A"></ion-datetime>
         </ion-item>
       </ion-list>
     </div>
@@ -102,7 +102,7 @@
         </ion-item>
         <ion-item>
           <ion-label>Date Of Birth</ion-label>
-          <ion-datetime (ionChange)="DateOfBirt($event)" [value]="dtDOB" display-format="MM/DD/YYYY"></ion-datetime>
+          <ion-datetime (ionChange)="DateOfBirt($event)" [value]="dtDOB" display-format="DD/MM/YYYY"></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Mobile<span class="dot">*</span></ion-label>
@@ -201,11 +201,11 @@
                   <ion-icon class="profile" ios="ios-contact" md="md-contact" ></ion-icon>
                   <ion-icon class="camera" ios="ios-camera" md="md-camera"></ion-icon>
               </label>
-            <input id="file-input" class="file" capture="camera"  (click)="resetFile('image')" type="file" accept="image/*" (change)="changeListener($event, 'image')"/>
+            <input id="file-input" class="file" capture="camera"  (click)="resetFile('image')" type="file" accept="image/*" (change)="changeListener($event, 'file-input')"/>
               <ng-template #avatara>
               <ion-avatar>
                   <img src="{{image}}" alt="" >
-                  <ion-icon class="remove" (click)="resetFile()" ios="ios-close" md="md-close"></ion-icon>
+                  <ion-icon class="remove" (click)="resetFile('image')" ios="ios-close" md="md-close"></ion-icon>
               </ion-avatar>
 
                   <!--<ion-button for="file-input" (click)="resetFile($event)">Reset</ion-button>-->
@@ -271,6 +271,10 @@
           <ion-list-header>
             <ion-label>COMPANY INFORMATION</ion-label>
           </ion-list-header>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Party name<span class="dot">*</span></ion-label>
+          <ion-input [(ngModel)]="strPartyName" name="strPartyName"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Address<span class="dot">*</span></ion-label>

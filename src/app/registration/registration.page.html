@@ -1,10 +1,13 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar class="header">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref routerLink="/login"></ion-back-button>
+        </ion-buttons>
         <ion-title>Registration</ion-title>
     </ion-toolbar>
 </ion-header>
-
 <ion-content>
+    <div class="registration" *ngIf="!newreg; else registerd">
     <ion-item-group>
         <ion-item-divider color="light"> <b>ORGANISATION INFORMATION</b></ion-item-divider>
         <ion-list>
@@ -37,7 +40,6 @@
                 <ion-input [(ngModel)]="OrgTel"></ion-input>
             </ion-item>
         </ion-list>
-        <br>
         <ion-list>
             <ion-item>
                 <ion-label class="type_label">Type <span class="dot">*</span> </ion-label>
@@ -51,9 +53,6 @@
             </ion-item>
          </ion-list>
     </ion-item-group>
-
-
-
     <div class="forgotPassword" >
         <ion-item-group>
             <ion-item-divider color="light"> <b>USER INFORMATION</b></ion-item-divider>
@@ -103,8 +102,15 @@
   </ion-item-group>
 
         <div class="login-btn" padding>
-            <ion-button  expand="block" (click)="callNewRegistraion();" class="login">Submit</ion-button>
+            <ion-button  expand="block" (click)="callNewRegistraion();"  class="login">Submit</ion-button>
         </div>
 
     </div>
+    </div>
+    <ng-template #registerd>
+        <div class="succusfully_reg">
+        <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
+        <h4>You have successfully registered</h4>
+        </div>
+    </ng-template>
 </ion-content>

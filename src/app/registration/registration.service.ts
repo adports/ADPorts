@@ -10,7 +10,6 @@ export class RegistrationService {
     constructor(public http: HttpClient) {
     }
     newRegistration(data) {
-        alert('hi')
         let headers: HttpHeaders = new HttpHeaders();
         console.log(this.data);
         headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');

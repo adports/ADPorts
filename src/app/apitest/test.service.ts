@@ -71,6 +71,13 @@ export class ServicesProvider {
         headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
         return this.http.post('http://172.21.111.48:92/WSTestPass/WSePass.asmx/GetHostPersons', person  , { headers});
     }
+// Create Pass
+    CreatePassService(submitPass) {
+        const Pass = submitPass;
+        let headers: HttpHeaders = new HttpHeaders();
+        headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        return this.http.post('http://172.21.111.48:92/WSTestPass/WSePass.asmx/SubmitPassData', Pass, {headers});
+    }
 }
 
 

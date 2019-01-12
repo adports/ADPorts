@@ -16,6 +16,10 @@ constructor(public http: HttpClient, private router: Router) {
 ngOnInit() {
     this.validateUsers();
     }
+    openAboutPage() {
+    alert('prithvi');
+        this.router.navigate(['/about']);
+    }
 validateUsers() {
         const users = 'username=' + this.username + '&password=' + this.password ;
         if(users){

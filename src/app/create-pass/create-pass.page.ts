@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {LoginPage} from '../login/login.page';
 import * as moment from 'moment';
 import {ServicesProvider} from '../apitest/test.service';
-
 @Component({
     selector: 'app-create-pass',
     templateUrl: './create-pass.page.html',
@@ -15,20 +14,20 @@ export class CreatePassPage implements OnInit {
     Gender;
     uad;
     strLoginType = 'CUSTOMER';
-    strLoginId = 'alkhat';
+    strLoginId = 'pr7821';
     strPassType;
     dtProposedEntryDate = moment().format('');
     dtProposedDepartureDate = moment(this.dtProposedEntryDate).add(1, 'days').format();
+    strMobile;
     strHostCompany;
     strHostDepartment;
     strHostPerson;
     strHostEmail;
-    strMobile;
     strTitle = 'Mr';
     strFullName;
     strFullnameAra = '';
-    strGender = 'Male';
     dtDOB = moment().format();
+    strGender = 'Male';
     strNationality;
     strReason;
     strEquipment;
@@ -49,34 +48,29 @@ export class CreatePassPage implements OnInit {
     strLinked_TokenNo;
     strCameraNo;
     strContract;
-    strCUST_CODE;
-    strPartyName;
-    strPartyNameAra;
+    strCUST_CODE = '';
+    strPartyName = '';
+    strPartyNameAra = '';
     strAddress;
-    Address;
     strEmail;
     strTelephone;
     strFax;
-    selectedPortNew;
-    strPhotoBase64;
-    strAttach1Base64;
-    strAttach1Ext;
-    strAttach2Name;
-    strAttach2Ext;
-    strAttach2Base64;
-    strAttach3Name;
-    strAttach3Base64;
-    strAttach3Ext;
-    strAttach4Name;
-    strAttach4Base64;
-    strAttach4Ext;
-    fileData;
+    strPhotoBase64 = '';
+    strAttach1Base64 = '';
+    strAttach1Ext = '';
+    strAttach2Name = '';
+    strAttach2Ext = '';
+    strAttach2Base64 = '';
+    strAttach3Name = '';
+    strAttach3Base64 = '';
+    strAttach3Ext = '';
+    strAttach4Name = '';
+    strAttach4Base64 = '';
+    strAttach4Ext = '';
     No = 'No';
-    data;
     strPorts;
     Ports;
     passType;
-    strPassTyp;
     Nationality;
     pdf;
     pdf1;
@@ -84,7 +78,6 @@ export class CreatePassPage implements OnInit {
     pdf3;
     pdf4;
     HostCompany;
-    HostCompany1;
     Department;
     strPerson;
      IDs;
@@ -92,8 +85,11 @@ export class CreatePassPage implements OnInit {
      VehicleReg;
     VehiclePlate;
     mySortingFunction;
-    private strPdfBase64: string;
     Attachment ;
+    strAttach1Name;
+    strAttach1Base64;
+    Tokan;
+    private person;
 
 
     constructor(private page: LoginPage, private GetService: ServicesProvider) {
@@ -132,7 +128,7 @@ export class CreatePassPage implements OnInit {
 //         this.dtProposedDepartureDate = dtProposedEntryDate.format();
 //
 //     }
-    updateMyDate(dtProposedEntryDate) {
+updateMyDate(dtProposedEntryDate) {
         console.log(dtProposedEntryDate);
         this.dtProposedDepartureDate = moment(this.dtProposedEntryDate).add(1, 'days').format();
         console.log(this.dtProposedDepartureDate);
@@ -260,7 +256,7 @@ readThis(inputValue, id) {
             const myReader: FileReader = new FileReader();
             myReader.readAsDataURL(file);
             myReader.onload = (e) => {
-                if (id === 'image') {
+                if (id === 'file-input') {
                     this.image = myReader.result;
                     const myString = this.image;
                     this.strPhotoBase64 = myString.substr(23).slice(0);
@@ -369,53 +365,72 @@ HostPerson(strHostCompany, strHostDepartment) {
 
     SelectHostPerson($event) {
         console.log($event);
+        this.strHostEmail = $event.detail.value.ATTRIBUTE1;
     }
-
 // createPass Pass
-    createPass() {
+    CreatePass() {
         const submitPass = 'strLoginType=' + this.strLoginType
-            + 'strLoginId' + this.strLoginId
-            + 'strPassType' + this.strPassType
-            + 'dtProposedEntryDate' + this.dtProposedEntryDate
-            + 'dtProposedDepartureDate' + this.dtProposedDepartureDate
-            + 'strPorts'  + this.strPorts
-            + 'strHostCompany' + this.strHostCompany
-            + 'strHostDepartment' + this.strHostDepartment
-            + 'strHostPerson' + this.strHostPerson
-            + 'strEmail' + this.strEmail
-            + 'strMobile' + this.strMobile
-            + 'strTitle' + this.strTitle
-            + 'strFullName' + this.strFullName
-            + 'strFullnameAra' + this.strFullnameAra
-            + 'strGender' + this.strGender
-            + 'dtDOB' + this.dtDOB
-            + 'strNationality' + this.strNationality
-            + 'strReason' + this.strReason
-            + 'strEquipment' + this.strEquipment
-            + 'strRegNo' + this.strRegNo
-            + 'strRegCert' + this.strRegCert
-            + 'strCompCert' + this.strCompCert
-            + 'strLoadTestCert' + this.strLoadTestCert
-            + 'strID_type' + this.strID_type
-            + 'strID_No' + this.strID_No
-            + 'strEmirateID' + this.strEmirateID
-            + 'strCardNumber' + this.strCardNumber
-            + 'strVeh' + this.strVeh
-            + 'strVeh_No' + this.strVeh_No
-            + 'strVehReg' + this.strVehReg
-            + 'strVehPlate' + this.strVehPlate
-            + 'strAreaToVisit' + this.strAreaToVisit
-            + 'strCNIA_No' + this.strCNIA_No
-            + 'strLinked_TokenNo' + this.strLinked_TokenNo
-            + 'strCameraNo' + this.strCameraNo
-            + 'strContract' + this.strContract
-            + 'strPartyName' + this.strPartyName
-            + 'strFax' + this.strFax
-            + 'strAddress' + this.strAddress
-            + 'strTelephone' + this.strTelephone
-            + 'strPhotoBase64' + this.strPhotoBase64
-            + 'pdf' + this.pdf;
+            + '&strLoginId=' + this.strLoginId
+            + '&strPassType=' + this.strPassType
+            + '&dtProposedEntryDate=' + this.dtProposedEntryDate.slice(0, 19)
+            + '&dtProposedDepartureDate=' + this.dtProposedDepartureDate.slice(0, 19)
+            + '&strReason=' + this.strReason
+            + '&strPorts='  + this.strPorts
+            + '&strTitle=' + this.strTitle
+            + '&strFullnameAra=' + this.strFullnameAra
+            + '&strHostCompany=' + this.strHostCompany
+            + '&strHostDepartment=' + this.strHostDepartment
+            + '&strHostPerson=' + this.person
+            + '&strHostEmail=' + this.strHostEmail
+            + '&strMobile=' + this.strMobile
+            + '&strFullName=' + this.strFullName
+            + '&strGender=' + this.strGender
+            + '&dtDOB=' + this.dtDOB.slice(0, 19)
+            + '&strNationality=' + this.strNationality
+            + '&strEquipment=' + this.strEquipment
+            + '&strRegNo=' + this.strRegNo
+            + '&strRegCert=' + this.strRegCert
+            + '&strCompCert=' + this.strCompCert
+            + '&strLoadTestCert=' + this.strLoadTestCert
+            + '&strID_type=' + this.strID_type
+            + '&strID_No=' + this.strID_No
+            + '&strEmirateID=' + this.strEmirateID
+            + '&strCardNumber=' + this.strCardNumber
+            + '&strVeh=' + this.strVeh
+            + '&strVeh_No=' + this.strVeh_No
+            + '&strVehReg=' + this.strVehReg
+            + '&strVehPlate=' + this.strVehPlate
+            + '&strAreaToVisit=' + this.strAreaToVisit
+            + '&strCNIA_No=' + this.strCNIA_No
+            + '&strCUST_CODE=' + this.strCNIA_No
+            + '&strPartyName=' + this.strPartyName
+            + '&strPartyNameAra=' + this.strPartyNameAra
+            + '&strLinked_TokenNo=' + this.strLinked_TokenNo
+            + '&strCameraNo=' + this.strCameraNo
+            + '&strContract=' + this.strContract
+            + '&strPartyName=' + this.strPartyName
+            + '&strFax=' + this.strFax
+            + '&strAddress=' + this.strAddress
+            + '&strEmail=' + this.strEmail
+            + '&strTelephone=' + this.strTelephone
+            + '&strPhotoBase64=' + this.strPhotoBase64
+            + '&strAttach1Name=' + this.strAttach1Name
+            + '&strAttach1Base64=' + this.strAttach1Base64
+            + '&strAttach1Ext=' + this.strAttach1Ext
+            + '&strAttach2Name=' + this.strAttach2Name
+            + '&strAttach2Ext=' + this.strAttach2Ext
+            + '&strAttach2Base64=' + this.strAttach2Base64
+            + '&strAttach3Name=' + this.strAttach3Name
+            + '&strAttach3Base64=' + this.strAttach3Base64
+            + '&strAttach3Ext=' + this.strAttach3Ext
+            + '&strAttach4Name=' + this.strAttach4Name
+            + '&strAttach4Base64=' + this.strAttach4Base64
+            + '&strAttach4Ext=' + this.strAttach4Ext
+            // + 'pdf' + this.pdf;
         console.log(submitPass);
-
+        this.GetService.CreatePassService(submitPass).subscribe((res) => {
+            this.Tokan = res;
+            console.log(this.Tokan);
+        });
     }
 }

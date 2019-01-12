@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RegistrationService} from './registration.service';
-
+import { Component } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 @Component({
     selector: 'app-registration',
     templateUrl: './registration.page.html',
@@ -22,13 +23,24 @@ Department
 Mobile
 UserId
 Email
-    constructor(private register: RegistrationService) {
+newreg ;
+status;
+    constructor(private register: RegistrationService, public toastController: ToastController) {
+
+    }
+    async presentToastWithOptions(message) {
+        const toast = await this.toastController.create({
+            message: message,
+            duration: 2000,
+            position: 'bottom',
+            closeButtonText: 'Done'
+        });
+        toast.present();
     }
 
     ngOnInit() {
-        this.callNewRegistraion();
+        // this.callNewRegistraion();
     }
-
     callNewRegistraion() {
         const data =
             '&strOrgName=' + this.OrgName
@@ -70,6 +82,17 @@ Email
         this.register.newRegistration(data).subscribe((res) => {
             this.data = res;
             console.log(this.data);
+            status = this.data[0].status;
+            if (status === '0') {
+                alert(status);
+                this.newreg = false;
+                const message = this.data[0].message;
+                alert(message);
+                this.presentToastWithOptions(message);
+            } else if (status !== '0') {
+            this.newreg = true;
+            this.status = this.data[0].message;
+            }
         });
     }
 }

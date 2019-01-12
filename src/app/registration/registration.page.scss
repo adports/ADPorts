@@ -1,8 +1,24 @@
-:root(.item-native) {
-    --padding-start: 0px !important;
+//:root(.item-native) {
+//    --padding-start: 0px !important;
+//
+//   }
+//
+//   ion-item.item-input {
+//    --padding-start: 0px;
+//}
 
-   }
+.list-md {
+  margin: 0;
+  padding: 8px 15px;
+}
 
-   ion-item.item-input {
-    --padding-start: 0px;
+.succusfully_reg {
+  margin: 200px 0 0 0;
+  text-align: center;
+  h4 {
+    font-size: 20px;
+    color: #012a3a;
+    font-weight: 900;
+  }
+  ion-icon{font-size:65px;}
 }

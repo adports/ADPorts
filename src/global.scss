@@ -10,16 +10,13 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-.header{--background: #012a3a; color:#fff;}
 
-ion-header{
-    --background: #012a3a;
-    text-align: center;
-    ion-toolbar {
-        color: #142336;
-    }
+.md{
+    .header{--background: #012a3a; color:#fff; text-align: center;}
 
 }
+
+
 
 .dot{
     color: red;

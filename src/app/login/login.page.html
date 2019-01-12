@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="header">
     <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -8,7 +8,7 @@
      <h4>Welocome to Abu Dhabi Ports Pass</h4>
      <small>Login to your account below</small>
   </div>
-    <form (ngSubmit)="validateUsers()">
+    <form (ngSubmit)="validateUsers($event)">
   <ion-grid>
       <ion-row>
           <ion-col size="12">
@@ -26,34 +26,47 @@
         </ion-row>
   </ion-grid>
 <div class="forget_password">
-<a href="/Forgot-Password">Forgot Password</a>
+<a routerLink="/forgot">Forgot Password</a>
 </div>
 <div class="login-btn">
 <ion-button expand="block" type="submit"  class="login">Login</ion-button>
-<ion-button expand="block" class="back" >Back</ion-button>
+<ion-button expand="block" routerLink="/home" class="back" >Back</ion-button>
 </div>
     </form>
 </ion-content>
 <div class="bottom">
-    <ion-grid>
-        <ion-row>
-          <ion-col col-6>
-              <div class="tell_Friend">
-                  <ion-icon ios="ios-people" md="md-people"></ion-icon> <a href="/">Tell A Friend</a>
-                    </div>
-          </ion-col>
-          <ion-col col-6>
-              <div class="aboutus">
-                  <ion-icon ios="ios-alert" md="md-alert"></ion-icon><a href="/about">About Us</a>
-                    </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-      <ion-grid>
-       
-      
-       
-        </ion-grid>
+    <ion-fab vertical="bottom" horizontal="start" size="small"  id="fab1" slot="fixed">
+        <ion-fab-button  size="small" class="e2eFabTopRight">
+            <ion-icon name="add" class="add"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="end">
+            <ion-fab-button >
+                <ion-icon name="share"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="openAboutPage()">
+                <ion-icon name="alert" ></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
+    </ion-fab>
+    <!--<ion-grid>-->
+        <!--<ion-row>-->
+          <!--<ion-col col-6>-->
+              <!--<div class="tell_Friend">-->
+                  <!--<ion-icon ios="ios-people" md="md-people"></ion-icon> <a href="/">Tell A Friend</a>-->
+                    <!--</div>-->
+          <!--</ion-col>-->
+          <!--<ion-col col-6>-->
+              <!--<div class="aboutus">-->
+                  <!--<ion-icon ios="ios-alert" md="md-alert"></ion-icon><a href="/about">About Us</a>-->
+                    <!--</div>-->
+          <!--</ion-col>-->
+        <!--</ion-row>-->
+      <!--</ion-grid>-->
+      <!--<ion-grid>-->
+       <!---->
+      <!---->
+       <!---->
+        <!--</ion-grid>-->
   
 
 </div>
