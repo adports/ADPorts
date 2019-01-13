@@ -21,15 +21,15 @@ color: red;
         text-decoration: none;
         margin: 0 10px 17px 0;
         color:#3e8ede;
+        font-size: 13px;
     }
 }
 
 .login-btn{
     margin: 100px 0px 4px 0px;
-    ion-button{    margin-bottom: 25px;
-        &.login{--background:#3e8ede;}
-        &.back{--background: #003849;}
-     }
+    ion-button{    margin-bottom: 25px;}
+    .login{--background:#003849;font-weight: 600;margin: 0px 0px 15px 0px;}
+    .back{--background: #ccc; color: #333333; font-weight: 600;}
 }
 
 
@@ -61,7 +61,4 @@ a{       font-size: 13px; line-height: 23px; margin: 0px;    display: block;text
 
 
 .no-scroll .scroll-content {overflow: hidden;}
-
-//ion-fab-button{--background:#012a3a; color: #fff;
-//
-//}
+.button-native{height: 25px; width: 25px;}

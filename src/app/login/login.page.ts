@@ -22,7 +22,7 @@ ngOnInit() {
     }
 validateUsers() {
         const users = 'username=' + this.username + '&password=' + this.password ;
-        if(users){
+        if(users) {
             this.isValid = false;
         }
         let headers: HttpHeaders = new HttpHeaders();

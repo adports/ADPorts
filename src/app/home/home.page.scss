@@ -5,34 +5,17 @@
     margin: 15px 0 0 35px;
     ion-img{ :host img{  --width: 50%;}}
 }
-// ion-footer{ text-align: center; border: 0 !important;    padding: 0 15px 0 15px;
-//     --background:none;
-//     ion-toolbar {      border-radius: 8px;
-//         padding: 8px 20px 8px 20px;
-//          display: inline-block;
-//         --border-width: 0;
-//         border: 0 !important;
-//         --background: #525050;
-//         opacity: 0.8;
-//         .pass-user-btn{
-//             ion-button{font-size: 16px;   --height: 50px; width: 90%;text-transform: initial;    --border-radius: 8px;    }
-//             .already{--background:#003849; margin-bottom: 8px;}
-//             .new{--background: #ccc;color: #000000;}
-            
-//         }
-//     }
 
-// }
 
 
 ion-footer{ text-align: center; 
     --background:none;
     ion-toolbar {      
-        //  --padding-top: 14px;  
-        opacity: 0.8; padding: 10px; 
+        //  --padding-top: 14px;
+        padding: 10px;
         .pass-user-btn{
             ion-button{font-size: 16px; text-transform: initial;    --border-radius: 8px;    }
-            .already{--background:#003849; margin-bottom: 10px;}
+            .already{--background:#003849; margin-bottom: 10px; }
             .new{--background: #ccc;color: #000000;}
             
         }
