@@ -1,9 +1,40 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>feedback</ion-title>
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref routerLink="/createpass" ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Feed Back</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <div class="section" *ngIf="!feed; else thanku">
+  <div class="welcome">
+    <div class="logo">
+      <ion-img src="assets\abu-dhabi-ports-logo-dark.svg"></ion-img>
+    </div>
+    <h6>Report bugs every time you encounter problems to help us solve them faster.</h6>
+  </div>
+  <div class="forgotPassword">
+    <form (ngSubmit)="SubitFeedBack()">
+      <ion-item>
+        <ion-input placeholder="Subject" type="text" [(ngModel)]="strSubject" name="strSubject" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-textarea placeholder="Message" [(ngModel)]="strComment" name="strComment" required>
+        </ion-textarea>
+      </ion-item>
+      <div class="forgot-btn">
+        <ion-button expand="block"  type="submit"  class="submit" >Submit</ion-button>
+      </div>
+    </form>
+  </div>
+  </div>
+  <ng-template #thanku>
+    <div class="feed">
+      <ion-icon ios="ios-done-all" md="md-done-all"></ion-icon>
+      <h4>Thank you for valuable FeedBack <ion-icon style="margin-top: 5px" name="happy"></ion-icon> </h4>
+    </div>
+  </ng-template>
 
 </ion-content>

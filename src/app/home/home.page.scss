@@ -1,24 +1,25 @@
-
+ion-header{position: fixed;}
 // .ion-page{bottom:8px;}
 .main {
     text-align: center;
-    margin: 15px 0 0 35px;
-    ion-img{ :host img{  --width: 50%;}}
+    margin: 165px 0 0 0;
+    display: inline-block;
+    width: 200px;
+    ion-img{ img{  --width: 50%;}}
 }
 
+.home-page{background-image: url("../../assets/abhu-dhabi.PNG"); background-size: cover;height: 100%;
 
+     .pass-user-btn{
+         padding: 0px 15px 0 15px;
+         margin-top: 200px;
+         ion-button{font-size: 14px; text-transform: initial;   --height: 45px; font-weight: 600;
+         &.already{color:#fff; margin-bottom: 10px; --border-color:#fff;}
+         &.new{--background: #fff;color:#333333;--border-color:#fff;    margin-top: 20px;
+         }
+         }
 
-ion-footer{ text-align: center; 
-    --background:none;
-    ion-toolbar {      
-        //  --padding-top: 14px;
-        padding: 10px;
-        .pass-user-btn{
-            ion-button{font-size: 16px; text-transform: initial;    --border-radius: 8px;    }
-            .already{--background:#003849; margin-bottom: 10px; }
-            .new{--background: #ccc;color: #000000;}
-            
-        }
-    }
+     }
+ }
 
-}
+.header{--background: #34688d;}

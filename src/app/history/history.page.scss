@@ -1,0 +1,24 @@
+.approve-list {
+  overflow: auto;
+  height: 200px;
+}
+
+::ng-deep .canvasjs-chart-canvas {
+  width: 375px !important;
+  height: 313px !important;
+  position: fixed !important;
+  left: -11px;
+}
+
+::ng-deep .canvasjs-chart-credit{top:0px !important;}
+.unapprove {
+  margin-top: 165px;
+  text-align: center;
+  h4 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 30px;
+    color: #012a3a;
+  }
+  ion-icon{font-size: 35px;}
+}

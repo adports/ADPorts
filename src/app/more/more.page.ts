@@ -18,4 +18,15 @@ export class MorePage implements OnInit {
 FaQ() {
     this.router.navigate(['faq']);
 }
+
+    FeedBack() {
+        this.router.navigate(['feedback']);
+    }
+    LogOut(){
+      this.router.navigate(['login']);
+    }
+
+    KizadMap() {
+        this.router.navigate(['kizad']);
+    }
 }

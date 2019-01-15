@@ -14,7 +14,7 @@ export class CreatePassPage implements OnInit {
     Gender;
     uad;
     strLoginType = 'CUSTOMER';
-    strLoginId = 'pr7821';
+    strLoginId = 'praveen';
     strPassType;
     dtProposedEntryDate = moment().format('');
     dtProposedDepartureDate = moment(this.dtProposedEntryDate).add(1, 'days').format();
@@ -76,7 +76,6 @@ export class CreatePassPage implements OnInit {
     pdf1;
     pdf2;
     pdf3;
-    pdf4;
     HostCompany;
     Department;
     strPerson;
@@ -87,7 +86,6 @@ export class CreatePassPage implements OnInit {
     mySortingFunction;
     Attachment ;
     strAttach1Name;
-    strAttach1Base64;
     Tokan;
     private person;
 

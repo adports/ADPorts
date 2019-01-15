@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'history', loadChildren: './history/history.module#HistoryPageModule' },
   { path: 'faq', loadChildren: './more/faq/faq.module#FaqPageModule' },
   { path: 'feedback', loadChildren: './more/feedback/feedback.module#FeedbackPageModule' },
-  { path: 'create', loadChildren: './create/create.module#CreatePageModule' },
+  { path: 'kizad', loadChildren: './create/create.module#CreatePageModule' },
 
 ];
 

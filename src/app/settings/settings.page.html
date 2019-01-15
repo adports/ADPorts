@@ -18,6 +18,8 @@
           <ion-label>-Select-</ion-label>
           <ion-select value="brown" okText="Okay" cancelText="Dismiss">
             <ion-select-option value="brown">1 YEAR</ion-select-option>
+            <ion-select-option value="brown">2 YEAR</ion-select-option>
+            <ion-select-option value="brown">3 YEAR</ion-select-option>
             <ion-select-option value="blonde">8 MONTHS</ion-select-option>
           </ion-select>
         </ion-item>
@@ -33,11 +35,11 @@
         </ion-item>
         <ion-radio-group>
           <ion-item>
-            <ion-label>Daily Pass Online</ion-label>
+            <ion-label>Yes</ion-label>
             <ion-radio value="cord"></ion-radio>
           </ion-item>
           <ion-item>
-            <ion-label>Visitor Pass Online</ion-label>
+            <ion-label>No</ion-label>
             <ion-radio value="duesenberg"></ion-radio>
           </ion-item>
         </ion-radio-group>
@@ -53,26 +55,26 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">Name<span class="dot">*</span></ion-label>
-          <ion-input></ion-input>
+          <ion-input type="text" [(ngModel)]="Name" name="Name" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Date Of Birth</ion-label>
-          <ion-datetime  display-format="MMM DD, YYYY"></ion-datetime>
+          <ion-datetime (ionChange)="DateOfBirt($event)" [value]="dtDOB" display-format="DD/MM/YYYY"></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Mobile Number<span class="dot">*</span></ion-label>
-          <ion-input></ion-input>
+          <ion-input type="number" [(ngModel)]="Mobile" name="Mobile" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Company Email<span class="dot">*</span></ion-label>
-          <ion-input></ion-input>
+          <ion-input type="email" [(ngModel)]="Email" name="Email" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Company Telephone<span class="dot">*</span></ion-label>
-          <ion-input></ion-input>
+          <ion-input type="number" [(ngModel)]="Telephone" name="Telephone" required></ion-input>
         </ion-item>
-        <ion-button margin-top expand="block" class="header" >Reset All</ion-button>
-        <ion-button margin-top expand="block" class="header" > Save</ion-button>
+        <ion-button margin-top expand="block" class="header" type="submit" (click)=reset()>Reset All</ion-button>
+        <ion-button margin-top expand="block" class="header" type="submit" (click)="Save()"> Save</ion-button>
       </ion-list>
     </div>
 

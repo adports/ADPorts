@@ -13,6 +13,9 @@ import {CreatePassPage} from '../create-pass/create-pass.page';
 @Injectable()
 export class ServicesProvider {
     hostname1;
+    strStartDate = '14/01/2018';
+    strEndDate = '15/12/2018';
+    strUser = 'emirate';
 
 
 
@@ -20,8 +23,15 @@ export class ServicesProvider {
 
   constructor(public http: HttpClient) {
   }
+// Reset Password
+    ResetPasswordService(reset) {
+      alert(reset)
+        let headers: HttpHeaders = new HttpHeaders();
+        headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
+     return this.http.post('http://172.21.111.48:92/WSTestPass/WSePass.asmx/ResetPassword', reset, {headers});
+    }
   // PASSTYPE SERVICE
-    GetPassType(){
+    GetPassType() {
       return this.http.get('http://172.21.111.48:92/WSTestPass/WSePass.asmx/GetPassTypesOnline');
     }
 // GET PORTS
@@ -48,7 +58,6 @@ export class ServicesProvider {
       headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
       return this.http.post('http://172.21.111.48:92/WSTestPass/WSePass.asmx/GetPlateCodes', plate, {headers});
   }
-
 
 // HOST NAME
   HostNameService() {
@@ -78,6 +87,21 @@ export class ServicesProvider {
         headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
         return this.http.post('http://172.21.111.48:92/WSTestPass/WSePass.asmx/SubmitPassData', Pass, {headers});
     }
+
+    PassList() {
+        const list = 'strStartDate=' + this.strStartDate + '&strEndDate=' + this.strEndDate + '&strUser=' + this.strUser
+        let headers: HttpHeaders = new HttpHeaders();
+        headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        return this.http.post('http://172.21.111.48:92/WSTestPass/WSePass.asmx/GetOnlinePassListByUserNotPrinted', list, {headers});
+    }
+
+    FeedBackService(feedback) {
+        const feedbacks = feedback;
+        let headers: HttpHeaders = new HttpHeaders();
+        headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        return this.http.post('http://172.21.111.48:92/WSTestPass/WSePass.asmx/SubmitFeedBack', feedbacks, {headers});
+    }
+
 }
 
 

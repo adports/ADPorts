@@ -17,7 +17,6 @@ ngOnInit() {
     this.validateUsers();
     }
     openAboutPage() {
-    alert('prithvi');
         this.router.navigate(['/about']);
     }
 validateUsers() {
