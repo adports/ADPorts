@@ -1,10 +1,8 @@
 .card-background-page {
-
-    ion-card {
+     ion-card {
       position: relative;
     }
-  
-    .card-title {
+  .card-title {
       position: absolute;
       top: 22%;
       text-align: center;
@@ -13,8 +11,7 @@
       font-weight: bold;
       color: #fff;
     }
-  
-    .card-subtitle {
+  .card-subtitle {
       font-size: 1.0em;
       position: absolute;
       top: 52%;
@@ -36,8 +33,6 @@
       color: #142336;
     }
   }
-
-
 .abp{
 h4{
   // background: #142336;

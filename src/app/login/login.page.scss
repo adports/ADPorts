@@ -1,6 +1,6 @@
-$primaary:#012a3a;
-$secondary:#3e8ede;
-$tertiary:#003849;
+//$primaary:#012a3a;
+//$secondary:#3e8ede;
+//$tertiary:#003849;
 .welcome{
 text-align: center;
 h4{font-size: 14px;
@@ -26,17 +26,13 @@ h4{font-size: 14px;
     .login{--background:#003849;font-weight: 600;margin: 0px 0px 15px 0px;}
     .back{--background: #ccc; color: #333333; font-weight: 600;}
 }
-
-
 .tell_Friend {
     text-align: center;
     ion-icon {
         font-size: 45px;
         color: #012a3a;
-
-    }
-
-    a{    line-height: 23px;margin: 0px;    font-size: 13px;
+}
+a{    line-height: 23px;margin: 0px;    font-size: 13px;
         color: #4c8dff;    display: block; text-decoration: none}
 }
 
@@ -49,8 +45,8 @@ ion-icon {
     margin: 0px;
 
 }
-
-a{       font-size: 13px; line-height: 23px; margin: 0px;    display: block;text-decoration: none;
+a{
+    font-size: 13px; line-height: 23px; margin: 0px;    display: block;text-decoration: none;
     color: #4c8dff;}
 }
 

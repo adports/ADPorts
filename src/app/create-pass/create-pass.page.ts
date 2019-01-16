@@ -262,7 +262,7 @@ readThis(inputValue, id) {
                 }
             };
         } else {
-            console.log('Hale Magya less than 100 size enter maadle');
+            console.log('File size should less than 100 size');
     }
 }
 
@@ -304,7 +304,7 @@ readThisPdf(inputValue, id) {
                 }
             };
         } else {
-            console.log('Hale Magya less than 100 size enter maadle');
+            console.log('File size should less than 100 size');
         }
     }
 
