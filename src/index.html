@@ -15,39 +15,6 @@
   <!-- add to homescreen for ios -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <script>
-      window.onload = function () {
-
-          var chart = new CanvasJS.Chart("chartContainer", {
-              theme: "light2",
-              animationEnabled: true,
-              title: {
-                  text: "Analytics"
-              },
-              data: [{
-                  type: "pie",
-                  indexLabelFontSize: 18,
-                  radius: 80,
-                  indexLabel: "{label} - {y}",
-                  yValueFormatString: "###0.0\"%\"",
-                  click: explodePie,
-                  dataPoints: [
-                      { y: 42, label: "Daily Pass Online" },
-                      { y: 21, label: "Visitor Pass Online"},
-                  ]
-              }]
-          });
-          chart.render();
-
-          function explodePie(e) {
-              for(var i = 0; i < e.dataSeries.dataPoints.length; i++) {
-                  if(i !== e.dataPointIndex)
-                      e.dataSeries.dataPoints[i].exploded = false;
-              }
-          }
-
-      }
-  </script>
 </head>
 <body>
   <app-root></app-root>

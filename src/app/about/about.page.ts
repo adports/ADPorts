@@ -8,8 +8,11 @@ import {Router} from '@angular/router';
 })
 export class AboutPage implements OnInit {
 
-  constructor() { }
+
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
+
 }

@@ -12,11 +12,11 @@ const routes: Routes = [
     path: 'tabs',
     component: TabsPage,
     children: [
-      {
-        path: '',
-        redirectTo: '/tabs/(createpass:createpass)',
-        pathMatch: 'full',
-      },
+      // {
+      //   path: '',
+      //   redirectTo: '/tabs/(more:createpass)',
+      //   pathMatch: 'full',
+      // },
       {
         path: 'createpass',
         outlet: 'createpass',
@@ -40,10 +40,15 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'createpass',
-    redirectTo: '/tabs/(createpass:createpass)',
+    path: 'more',
+    redirectTo: '/tabs/(more:more)',
     pathMatch: 'full'
-  }
+  },
+    {
+        path: 'createpass',
+        redirectTo: '/tabs/(createpass:createpass)',
+        pathMatch: 'full'
+    }
 ];
 
 @NgModule({

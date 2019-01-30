@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsPage implements OnInit {
     Name: any;
-    Telephone: any;
     private dtDOB;
     Mobile;
     Email;

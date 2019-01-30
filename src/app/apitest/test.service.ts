@@ -1,9 +1,5 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {CreatePassPage} from '../create-pass/create-pass.page';
-
-
-
 /*
   Generated class for the ServicesProvider provider.
 
@@ -16,12 +12,7 @@ export class ServicesProvider {
     strStartDate = '14/01/2018';
     strEndDate = '15/12/2018';
     strUser = 'emirate';
-
-
-
-
-
-  constructor(public http: HttpClient) {
+constructor(public http: HttpClient) {
   }
 // Reset Password
     ResetPasswordService(reset) {
